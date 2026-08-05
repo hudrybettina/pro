@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bettina Hudry-Gerez — Durabilité &amp; Stratégie Systémique</title>
+    <title>Bettina Hudry-Gerez · Durabilité &amp; Stratégie Systémique</title>
 
     <!-- Description affichée dans Google et lors du partage du lien -->
-    <meta name="description" content="Bettina Hudry-Gerez — Transformation de modèles économiques et durabilité stratégique. J'aide les entreprises à faire des enjeux RSE un levier de création de valeur.">
+    <meta name="description" content="Bettina Hudry-Gerez. Transformation de modèles économiques et durabilité stratégique. J'aide les entreprises à faire des enjeux RSE un levier de création de valeur.">
 
     <!-- Aperçu enrichi lors d'un partage sur LinkedIn / WhatsApp / Slack -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Bettina Hudry-Gerez — Durabilité &amp; Stratégie Systémique">
+    <meta property="og:title" content="Bettina Hudry-Gerez · Durabilité &amp; Stratégie Systémique">
     <meta property="og:description" content="Transformer les enjeux de durabilité en activités viables et créatrices de valeur.">
     <meta property="og:image" content="https://hudrybettina.github.io/pro/photo-bettina.jpg">
     <meta property="og:url" content="https://hudrybettina.github.io/pro/">
@@ -43,7 +43,7 @@
             --font-body: 'Josefin Sans', sans-serif;
 
             /* ========================================================= */
-            /*  ⚙️  PANNEAU DE RÉGLAGES — TOUT SE CHANGE ICI              */
+            /*  ⚙️  PANNEAU DE RÉGLAGES : TOUT SE CHANGE ICI              */
             /*  Modifie une valeur ci-dessous : toute la page suit.      */
             /* ========================================================= */
 
@@ -52,7 +52,7 @@
             --text-lead: 19px;    /* Taille des phrases d'accroche */
             --lh-body: 1.75;      /* Interligne : espace ENTRE les lignes d'un paragraphe */
 
-            --space-section: clamp(64px, 6vw, 96px); /* Espace vertical entre deux sections */
+            --space-section: clamp(52px, 4.5vw, 80px); /* Espace vertical entre deux sections */
             --space-block: 32px;  /* Espace entre deux blocs à l'intérieur d'une section */
             --space-para: 18px;   /* Espace entre deux paragraphes */
         }
@@ -154,7 +154,9 @@
 
         /* SECTION ACCUEIL MINIMALISTE ÉNERGIQUE */
         .hero-section {
-            padding: 160px 0 120px 0; /* Grands espaces blancs du protocole */
+            /* Marges resserrées : elles s'adaptent à la taille de l'écran
+               au lieu d'être figées à 160px, qui laissaient un grand vide. */
+            padding: clamp(36px, 5vw, 80px) 0 clamp(32px, 4vw, 64px) 0;
         }
 
         /* Titre principal fluide en Panforte pro.
@@ -481,7 +483,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-top: 56px;
+            margin-top: clamp(20px, 2.5vw, 36px);
             font-size: var(--text-small);
             color: var(--text-muted);
             text-decoration: none;
@@ -524,12 +526,14 @@
             /* Les onglets passent à la ligne au lieu de sortir de l'écran */
             nav { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
             nav a { margin: 0 12px; }
-            body { padding-top: 180px; }
-            html { scroll-padding-top: 200px; }
+            /* Valeur de secours si le JavaScript ne s'exécute pas : volontairement
+               généreuse, car le menu passe sur trois lignes en écran étroit.
+               Le script ajuste ensuite cette valeur au pixel près. */
+            body { padding-top: 230px; }
+            html { scroll-padding-top: 250px; }
         }
 
         @media (max-width: 480px) {
-            .hero-section { padding: 100px 0 60px 0; }
             nav a { font-size: 14px; margin: 0 8px; }
             .card-num { font-size: 52px; right: 16px; }
             .stat { padding-left: 14px; }
@@ -573,9 +577,11 @@
     </section>
 
     <!-- BANDEAU DE CHIFFRES CLÉS -->
-    <section class="stats-band">
+    <!-- L'apparition porte sur le bandeau entier : sinon le fond gris s'affiche
+         avant son contenu et donne l'impression d'un grand bloc vide. -->
+    <section class="stats-band reveal">
         <div class="container">
-            <div class="stats-grid reveal">
+            <div class="stats-grid">
                 <div class="stat">
                     <div class="stat-value">13 ans</div>
                     <div class="stat-label">en conseil en innovation et stratégie, dont membre du CODIR</div>
@@ -974,7 +980,7 @@
     <!-- PIED DE PAGE CLOSING THE SITE -->
     <div class="container">
         <footer style="padding: 60px 0; font-size: 14px; color: var(--text-muted); text-align: center;">
-            <p>© 2026 Bettina Hudry — Stratégie, Durabilité &amp; Impact. Tous droits réservés.</p>
+            <p>© 2026 Bettina Hudry · Stratégie, Durabilité &amp; Impact. Tous droits réservés.</p>
         </footer>
     </div>
 
@@ -993,6 +999,31 @@
         var navbar   = document.getElementById("navbar");
         var progress = document.getElementById("reading-progress");
         var navLinks = Array.prototype.slice.call(document.querySelectorAll("nav a"));
+
+        // ---- 0. Cale le contenu juste sous le menu fixe ----
+        // La hauteur du menu varie selon la largeur de l'écran (les onglets
+        // passent à la ligne). On la mesure au lieu de la deviner, ce qui
+        // évite un grand vide en haut de page.
+        function fitToNavbar() {
+            if (!navbar) { return; }
+            var wasCompact = navbar.classList.contains("is-compact");
+            // On mesure toujours la hauteur en version dépliée, pour que le
+            // contenu ne saute pas quand le menu se compacte au défilement.
+            if (wasCompact) { navbar.classList.remove("is-compact"); }
+            var h = navbar.offsetHeight;
+            if (wasCompact) { navbar.classList.add("is-compact"); }
+
+            document.body.style.paddingTop = h + "px";
+            document.documentElement.style.scrollPaddingTop = (h + 24) + "px";
+        }
+
+        fitToNavbar();
+        window.addEventListener("resize", fitToNavbar, { passive: true });
+        // Les polices web changent la hauteur du menu une fois chargées
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(fitToNavbar).catch(function () {});
+        }
+        window.addEventListener("load", fitToNavbar);
 
         // Associe chaque onglet à sa section (ignore les liens externes)
         var sections = navLinks
@@ -1060,7 +1091,10 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+            // Seuil à 0 : un grand bloc apparaît dès que son bord entre à
+            // l'écran. Avec un seuil en pourcentage, les cartes hautes
+            // restaient vides trop longtemps.
+            }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
 
             Array.prototype.forEach.call(revealables, function (el) {
                 observer.observe(el);

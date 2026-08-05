@@ -1,4 +1,4 @@
-# Site vitrine — Bettina Hudry-Gerez
+# Site vitrine de Bettina Hudry-Gerez
 
 En ligne : **https://hudrybettina.github.io/pro/**
 
@@ -121,7 +121,7 @@ externe, donc rien à mettre à jour, rien qui puisse casser) :
 la balise.
 
 > 🔒 Sécurité : si le JavaScript ne fonctionne pas chez un visiteur, tout le
-> contenu s'affiche normalement — rien ne peut rester invisible. Et si la
+> contenu s'affiche normalement, rien ne peut rester invisible. Et si la
 > personne a activé « réduire les animations » dans les réglages de son
 > système, les effets sont automatiquement désactivés.
 
@@ -150,4 +150,4 @@ qui est chargée depuis Google Fonts et s'affiche pour tout le monde.
 
 👉 Sur ton Mac tu vois donc Panforte Pro, mais tes visiteurs voient Space Grotesk.
 Si tu veux que **tout le monde** voie Panforte Pro, il faut acheter la licence web
-de la police et l'héberger dans le dépôt — dis-le si tu veux qu'on le fasse.
+de la police et l'héberger dans le dépôt. Dis-le si tu veux qu'on le fasse.
