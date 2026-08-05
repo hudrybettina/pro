@@ -15,7 +15,7 @@
         :root {
             --bg-principal: #faf6f0;    /* Blanc cassé chaud / Crème (60%) */
             --bg-secondaire: #e8e4de;   /* Gris perle chaud (30%) */
-            --accent-color: #FF5757;    /* Rouge Corail d'accentuation (10%) */
+            --accent-color: #FF5757;    /* Rouge Corail vif d'accentuation (10%) */
             --text-main: #1c1e21;       /* Presque noir */
             --text-muted: #6e747c;      /* Gris moyen */
             --font-title: 'Space Grotesk', 'Panforte pro', sans-serif;
@@ -30,7 +30,7 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 140px; /* Aligne le haut des sections sous le grand menu fixe */
+            scroll-padding-top: 160px; /* Aligne le haut des sections sous le menu fixe */
         }
 
         body {
@@ -41,11 +41,11 @@
             color: var(--text-main);
             background-color: var(--bg-principal);
             overflow-x: hidden;
-            padding-top: 120px; /* Laisse l'espace nécessaire pour la barre fixe supérieure */
+            padding-top: 140px; /* Espace pour la barre fixe supérieure */
         }
 
         .container {
-            max-width: 1140px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 32px;
         }
@@ -59,25 +59,27 @@
             background-color: var(--bg-principal);
             border-bottom: 1px solid var(--bg-secondaire);
             z-index: 1000;
-            padding: 20px 0;
+            padding: 24px 0;
         }
 
         .navbar-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 40px;
         }
 
         /* Identité de marque sans redite */
         .brand-block {
             display: flex;
             flex-direction: column;
-            gap: 2px;
-            max-width: 600px;
+            gap: 4px;
+            max-width: 650px;
         }
 
+        /* Nom forcé en Josefin Sans */
         .brand-name {
-            font-family: var(--font-title);
+            font-family: var(--font-body);
             font-weight: 700;
             font-size: 24px;
             letter-spacing: -0.5px;
@@ -86,14 +88,15 @@
             line-height: 1.2;
         }
 
+        /* Boussole forcée en Presque Noir */
         .brand-tagline {
             font-size: 13px;
-            color: var(--text-muted);
+            color: var(--text-main);
             font-weight: 500;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
-        /* Liens de l'onglet permanent */
+        /* Onglets permanents */
         nav a {
             color: var(--text-main);
             text-decoration: none;
@@ -101,56 +104,59 @@
             font-size: 16px;
             margin-left: 32px;
             transition: color 0.2s;
+            white-space: nowrap;
         }
 
         nav a:hover {
             color: var(--accent-color);
         }
 
-        /* SECTION ACCUEIL MINIMALISTE HAUT DE GAMME */
+        /* SECTION ACCUEIL SUR LIGNES UNIQUES */
         .hero-section {
-            padding: 140px 0 100px 0; /* Espacement généreux */
+            padding: 160px 0 120px 0; /* Grands espaces blancs du protocole */
         }
 
+        /* Titre principal sur une ligne */
         h1 {
             font-family: var(--font-title);
             font-weight: 700;
-            font-size: 64px;
-            line-height: 1.15;
-            letter-spacing: -1.5px;
+            font-size: 52px;
+            line-height: 1.2;
+            letter-spacing: -1px;
             color: var(--text-main);
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+            white-space: nowrap;
         }
 
-        /* Ligne d'accroche forcée sur une ligne unique sur ordinateur */
+        /* Ligne d'accroche épurée sur une ligne unique */
         .hero-single-line {
-            font-size: 22px;
+            font-size: 24px;
             color: var(--text-muted);
             font-weight: 500;
             white-space: nowrap; 
             margin-bottom: 0;
         }
 
-        /* Mot accentué en rouge corail pour le dynamisme */
-        .highlight-action {
+        /* Mots accentués en rouge corail vif */
+        .highlight-corail {
             color: var(--accent-color);
             font-weight: 700;
         }
 
-        /* Adaptabilité Mobile et Tablettes */
-        @media (max-width: 992px) {
-            .hero-single-line {
-                white-space: normal; /* Permet le retour à la ligne uniquement sur petit écran */
+        /* Adaptabilité Écrans Moyens et Mobiles (Rupture propre du défilement horizontal) */
+        @media (max-width: 1160px) {
+            h1, .hero-single-line {
+                white-space: normal; /* Revient à la ligne proprement sur les petits écrans */
             }
         }
 
         @media (max-width: 768px) {
-            body { padding-top: 160px; }
+            body { padding-top: 180px; }
             .navbar-fixed { padding: 16px 0; }
             .navbar-content { flex-direction: column; gap: 16px; text-align: center; }
             .brand-block { align-items: center; text-align: center; }
             nav a { margin: 0 12px; }
-            h1 { font-size: 36px; }
+            h1 { font-size: 32px; }
             .hero-single-line { font-size: 18px; }
             .hero-section { padding: 80px 0 40px 0; }
         }
@@ -158,7 +164,7 @@
 </head>
 <body>
 
-    <!-- BARRE DE NAVIGATION PERMANENTE ET FIXE -->
+    <!-- BARRE DE NAVIGATION FIXE ET FLUIDE -->
     <div class="navbar-fixed">
         <div class="container">
             <div class="navbar-content">
@@ -169,7 +175,7 @@
                 <nav>
                     <a href="#vision">Vision</a>
                     <a href="#offre">Offre</a>
-                    <a href="#projets">Expériences</a>
+                    <a href="#projets">Mes Expériences</a>
                     <a href="#valeurs">Valeurs</a>
                     <a href="#contact">Contact</a>
                 </nav>
@@ -177,12 +183,12 @@
         </div>
     </div>
 
-    <!-- SECTION 0 – ACCUEIL ÉPURÉE ET DYNAMIQUE -->
+    <!-- SECTION 0 – ACCUEIL MINIMALISTE ÉNERGIQUE -->
     <section id="accueil" class="hero-section">
         <div class="container">
             <h1>Transformation de modèles économiques &amp; Durabilité stratégique</h1>
             <p class="hero-single-line">
-                Poser un regard différent sur la création de valeur pour <span class="highlight-action">pérenniser</span> les organisations.
+                Poser un <span class="highlight-corail">regard différent</span> pour <span class="highlight-corail">pérenniser</span> les organisations.
             </p>
         </div>
     </section>
