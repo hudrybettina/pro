@@ -478,30 +478,6 @@
             margin-bottom: 10px;
         }
 
-        /* --- Indice de défilement sous le titre d'accueil --- */
-        .scroll-cue {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: clamp(20px, 2.5vw, 36px);
-            font-size: var(--text-small);
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .scroll-cue:hover { color: var(--accent-color); }
-
-        .scroll-cue span {
-            display: inline-block;
-            animation: nudge 1.8s ease-in-out infinite;
-        }
-
-        @keyframes nudge {
-            0%, 100% { transform: translateY(0); }
-            50%      { transform: translateY(5px); }
-        }
-
         /* --- Accessibilité : contour visible au clavier --- */
         a:focus-visible,
         button:focus-visible {
@@ -513,7 +489,6 @@
         /* --- Respect du réglage système « réduire les animations » --- */
         @media (prefers-reduced-motion: reduce) {
             .js-reveal .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-            .scroll-cue span { animation: none; }
             .card:hover, .value-card:hover { transform: none; }
             html { scroll-behavior: auto; }
         }
@@ -572,7 +547,6 @@
             <p class="hero-single-line">
                 Poser un <span class="highlight-corail">regard différent</span> pour <span class="highlight-corail">pérenniser</span> les organisations.
             </p>
-            <a href="#vision" class="scroll-cue">Découvrir ma vision <span>↓</span></a>
         </div>
     </section>
 
