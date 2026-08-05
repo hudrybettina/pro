@@ -21,12 +21,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
+    <!-- Active le masquage initial des blocs animés UNIQUEMENT si le JavaScript
+         fonctionne. Sans cette classe, tout le contenu reste visible. -->
+    <script>
+        if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            document.documentElement.className += " js-reveal";
+        }
+    </script>
+
     <style>
         /* DESIGN SYSTEM STRICT & REFINÉ */
         :root {
             --bg-principal: #faf6f0;    /* Blanc cassé chaud / Crème (60%) */
             --bg-secondaire: #e8e4de;   /* Gris perle chaud (30%) */
             --accent-color: #FF5757;    /* Rouge Corail vif d'accentuation (10%) */
+            --surface: #fffcf8;         /* Blanc chaud : fond des cartes */
             --text-main: #1c1e21;       /* Presque noir */
             --text-muted: #6e747c;      /* Gris moyen */
             /* Panforte pro déclarée en premier, Space Grotesk sert de secours web si non installée en local */
@@ -177,6 +186,7 @@
         h3 {
             font-family: var(--font-title);
             font-weight: 700;
+            line-height: 1.3; /* Plus serré que le corps de texte : c'est un titre */
         }
 
         /* Ligne d'accroche fluide en Josefin Sans */
@@ -220,6 +230,26 @@
             transform: translateY(-2px);
         }
 
+        /* Bouton d'action principal (corail plein) */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 20px 44px;
+            border-radius: 4px;
+            box-shadow: 0 4px 14px rgba(255, 87, 87, 0.22);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(255, 87, 87, 0.32);
+        }
+
         /* Le lien LinkedIn reste discret, en texte souligné */
         .link-inline {
             font-family: var(--font-title);
@@ -241,6 +271,251 @@
             font-weight: 700;
         }
 
+        /* ============================================================= */
+        /*  COMPOSANTS DE MISE EN FORME                                  */
+        /* ============================================================= */
+
+        /* --- Barre de progression de lecture (fine ligne corail en haut) --- */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background-color: var(--accent-color);
+            z-index: 1100;
+            transition: width 0.12s linear;
+        }
+
+        /* --- Barre de navigation qui se compacte au défilement --- */
+        .navbar-fixed {
+            transition: padding 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar-fixed.is-compact {
+            padding: 14px 0;
+            box-shadow: 0 2px 24px rgba(28, 30, 33, 0.07);
+        }
+
+        .brand-tagline {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+            max-height: 60px;
+            overflow: hidden;
+        }
+
+        /* La baseline s'efface quand la barre se compacte, pour gagner de la place */
+        .navbar-fixed.is-compact .brand-tagline {
+            opacity: 0;
+            max-height: 0;
+        }
+
+        /* --- Onglet actif : soulignement corail qui suit le défilement --- */
+        nav a {
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.25s ease;
+        }
+
+        nav a:hover::after,
+        nav a.is-active::after {
+            transform: scaleX(1);
+        }
+
+        nav a.is-active {
+            font-weight: 700;
+        }
+
+        /* --- Apparition en fondu des sections au défilement ---
+           SÉCURITÉ : le masquage n'est appliqué que si le JavaScript a pu
+           poser la classe .js-reveal sur <html>. Sans JavaScript, ou si le
+           script échoue, tout le contenu reste visible normalement. */
+        .js-reveal .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+        }
+
+        .js-reveal .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* --- Étiquette de section (petit trait + texte corail en capitales) --- */
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 22px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        /* --- Bandeau de chiffres clés --- */
+        .stats-band {
+            background-color: var(--bg-secondaire);
+            padding: var(--space-section) 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: clamp(24px, 3vw, 40px);
+        }
+
+        .stat {
+            border-left: 2px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        .stat-value {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: clamp(30px, 3.2vw, 42px);
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+            color: var(--text-main);
+        }
+
+        .stat-label {
+            font-size: var(--text-small);
+            color: var(--text-muted);
+            line-height: 1.45;
+            margin-top: 8px;
+        }
+
+        /* --- Cartes (leviers d'offre et blocs d'expériences) --- */
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--bg-secondaire);
+            border-radius: 10px;
+            padding: clamp(24px, 3vw, 40px);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 87, 87, 0.35);
+            box-shadow: 0 16px 44px rgba(28, 30, 33, 0.08);
+        }
+
+        /* Grand numéro filigrane dans le coin de la carte */
+        .card-num {
+            position: absolute;
+            top: 10px;
+            right: 24px;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 72px;
+            line-height: 1;
+            color: var(--accent-color);
+            opacity: 0.13;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .card-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* --- Grille des valeurs --- */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+            gap: 20px;
+        }
+
+        .value-card {
+            background-color: var(--surface);
+            border: 1px solid var(--bg-secondaire);
+            border-top: 3px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 36px rgba(28, 30, 33, 0.07);
+        }
+
+        .value-name {
+            font-family: var(--font-title);
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 15px;
+            letter-spacing: 0.4px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* --- Indice de défilement sous le titre d'accueil --- */
+        .scroll-cue {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 56px;
+            font-size: var(--text-small);
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .scroll-cue:hover { color: var(--accent-color); }
+
+        .scroll-cue span {
+            display: inline-block;
+            animation: nudge 1.8s ease-in-out infinite;
+        }
+
+        @keyframes nudge {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(5px); }
+        }
+
+        /* --- Accessibilité : contour visible au clavier --- */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
+
+        /* --- Respect du réglage système « réduire les animations » --- */
+        @media (prefers-reduced-motion: reduce) {
+            .js-reveal .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            .scroll-cue span { animation: none; }
+            .card:hover, .value-card:hover { transform: none; }
+            html { scroll-behavior: auto; }
+        }
+
         /* ================= AJUSTEMENTS ADAPTATIFS MOBILE & TABLETTE ================= */
         @media (max-width: 900px) {
             .navbar-content { flex-direction: column; gap: 20px; text-align: center; }
@@ -256,13 +531,18 @@
         @media (max-width: 480px) {
             .hero-section { padding: 100px 0 60px 0; }
             nav a { font-size: 14px; margin: 0 8px; }
+            .card-num { font-size: 52px; right: 16px; }
+            .stat { padding-left: 14px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Fine ligne corail en haut qui indique l'avancement dans la page -->
+    <div class="reading-progress" id="reading-progress"></div>
+
     <!-- BARRE DE NAVIGATION FIXE ET ADAPTATIVE -->
-    <div class="navbar-fixed">
+    <div class="navbar-fixed" id="navbar">
         <div class="container">
             <div class="navbar-content">
                 <div class="brand-block">
@@ -283,10 +563,36 @@
     <!-- SECTION 0 – ACCUEIL MINIMALISTE ÉNERGIQUE -->
     <section id="accueil" class="hero-section">
         <div class="container">
+            <div class="eyebrow">Stratégie · Durabilité · Innovation</div>
             <h1>Transformation de modèles économiques &amp; Durabilité stratégique</h1>
             <p class="hero-single-line">
                 Poser un <span class="highlight-corail">regard différent</span> pour <span class="highlight-corail">pérenniser</span> les organisations.
             </p>
+            <a href="#vision" class="scroll-cue">Découvrir ma vision <span>↓</span></a>
+        </div>
+    </section>
+
+    <!-- BANDEAU DE CHIFFRES CLÉS -->
+    <section class="stats-band">
+        <div class="container">
+            <div class="stats-grid reveal">
+                <div class="stat">
+                    <div class="stat-value">13 ans</div>
+                    <div class="stat-label">en conseil en innovation et stratégie, dont membre du CODIR</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">100+</div>
+                    <div class="stat-label">projets de stratégie et d'innovation menés</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">300+</div>
+                    <div class="stat-label">partenariats noués avec des décideurs ETI et grands groupes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">1 M€</div>
+                    <div class="stat-label">de développement commercial sur une business unit fragilisée</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -355,12 +661,13 @@
         <div class="container" style="text-align: justify; text-justify: inter-word; font-family: var(--font-body);">
             
             <!-- Titre de section principal fluide -->
-            <h2 style="font-family: var(--font-title); font-weight: 700; font-size: clamp(28px, 3.5vw, 46px); line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; color: var(--text-main); text-align: left;">
+            <div class="eyebrow reveal">Ce que j'apporte</div>
+            <h2 class="reveal" style="margin-bottom: 24px; text-align: left;">
                 Mon Offre
             </h2>
-            
+
             <!-- Accroche principale textuelle fusionnée sur la même ligne, sans gras superflu -->
-            <div style="max-width: 100%; margin-bottom: 32px; line-height: var(--lh-body);">
+            <div class="reveal" style="max-width: 100%; margin-bottom: 32px; line-height: var(--lh-body);">
                 <p style="font-size: clamp(16px, 1.6vw, 18px); margin-bottom: 14px; text-align: left; color: var(--text-main); font-weight: 500;">
                     Préparer l’avenir sans fragiliser la solidité économique actuelle
                 </p>
@@ -369,12 +676,15 @@
                 </p>
             </div>
 
-            <!-- LEVIER 1 – Titre Panforte Pro Bold & Corail Vif -->
-            <div style="max-width: 100%; margin-bottom: 32px; line-height: var(--lh-body);">
-                <h3 style="font-family: var(--font-title); font-weight: 700; font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px;">
-                    1. Faire évoluer les activités existantes pour les rendre pérennes et préparer le modèle économique de demain
+            <div class="card-stack">
+
+            <!-- LEVIER 1 – carte numérotée -->
+            <div class="card reveal" style="max-width: 100%; line-height: var(--lh-body);">
+                <div class="card-num">01</div>
+                <h3 style="font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px; padding-right: 70px;">
+                    Faire évoluer les activités existantes pour les rendre pérennes et préparer le modèle économique de demain
                 </h3>
-                
+
                 <!-- Blocs de puces décalés avec bordure gauche subtile, calqués sur la section 1 -->
                 <div style="padding-left: clamp(12px, 2.5vw, 24px); max-width: 100%; border-left: 2px solid var(--bg-secondaire);">
                     <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
@@ -390,10 +700,11 @@
                 </div>
             </div>
 
-            <!-- LEVIER 2 – Titre Panforte Pro Bold & Corail Vif -->
-            <div style="max-width: 100%; margin-bottom: 48px; line-height: var(--lh-body);">
-                <h3 style="font-family: var(--font-title); font-weight: 700; font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px;">
-                    2. Créer et rendre viable économiquement de nouvelles activités sans fragiliser la solidité de l’organisation
+            <!-- LEVIER 2 – carte numérotée -->
+            <div class="card reveal" style="max-width: 100%; line-height: var(--lh-body);">
+                <div class="card-num">02</div>
+                <h3 style="font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px; padding-right: 70px;">
+                    Créer et rendre viable économiquement de nouvelles activités sans fragiliser la solidité de l’organisation
                 </h3>
                 
                 <!-- Blocs de puces décalés avec bordure gauche subtile, calqués sur la section 1 -->
@@ -419,8 +730,10 @@
                 </div>
             </div>
 
+            </div><!-- /.card-stack -->
+
             <!-- BLOCS DE FIN CONTEXTE, POSTURE ET FORMATS FLEXIBLES ADAPTATIFS -->
-            <div style="padding-top: 24px; border-top: 1px solid var(--bg-secondaire); max-width: 100%; font-size: var(--text-small); line-height: var(--lh-body); display: flex; flex-direction: column; gap: 12px;">
+            <div class="reveal" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--bg-secondaire); max-width: 100%; font-size: var(--text-small); line-height: var(--lh-body); display: flex; flex-direction: column; gap: 12px;">
                 
                 <div style="color: var(--text-main); text-align: left; font-weight: 400;">
                     <span style="font-weight: 700; font-family: var(--font-title);">Contexte d'intervention :</span> 
@@ -447,15 +760,19 @@
         <div class="container" style="text-align: justify; text-justify: inter-word;">
             
             <!-- Titre de section principal fluide -->
-            <h2 style="font-family: var(--font-title); font-weight: 700; font-size: clamp(28px, 3.5vw, 46px); line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; color: var(--text-main); text-align: left;">
+            <div class="eyebrow reveal">Sur le terrain</div>
+            <h2 class="reveal" style="margin-bottom: 24px; text-align: left;">
                 Mes Expériences
             </h2>
-          
+
+            <div class="card-stack">
+
             <!-- ================= LEVIER 1 ================= -->
-            <div style="max-width: 100%; margin-bottom: 32px; line-height: var(--lh-body);">
+            <div class="card reveal" style="max-width: 100%; line-height: var(--lh-body);">
+                <div class="card-num">01</div>
                 <!-- Titre du Levier 1 aligné scrupuleusement sur la taille et la police de la section 2 -->
-                <h3 style="font-family: var(--font-title); font-weight: 700; font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px;">
-                    1. Faire évoluer les activités existantes pour les rendre pérennes et préparer le modèle économique de demain
+                <h3 style="font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px; padding-right: 70px;">
+                    Faire évoluer les activités existantes pour les rendre pérennes et préparer le modèle économique de demain
                 </h3>
                 
                 <!-- Liste des expériences du Levier 1 en Josefin Sans, noir doux, aucun gras -->
@@ -492,10 +809,11 @@
             </div>
 
             <!-- ================= LEVIER 2 ================= -->
-            <div style="max-width: 100%; margin-bottom: 0; line-height: var(--lh-body);">
+            <div class="card reveal" style="max-width: 100%; line-height: var(--lh-body);">
+                <div class="card-num">02</div>
                 <!-- Titre du Levier 2 aligné scrupuleusement sur la taille et la police de la section 2 -->
-                <h3 style="font-family: var(--font-title); font-weight: 700; font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-top: 24px; margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px;">
-                    2. Créer et rendre viable économiquement de nouvelles activités sans fragiliser la solidité de l’organisation
+                <h3 style="font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px; padding-right: 70px;">
+                    Créer et rendre viable économiquement de nouvelles activités sans fragiliser la solidité de l’organisation
                 </h3>
                 
                 <!-- Liste des expériences du Levier 2 en Josefin Sans, noir doux, aucun gras -->
@@ -527,6 +845,8 @@
                 </ul>
             </div>
 
+            </div><!-- /.card-stack -->
+
         </div>
     </section>
 
@@ -536,12 +856,13 @@
         <div class="container" style="text-align: justify; text-justify: inter-word;">
             
             <!-- Titre principal de la section en Panforte pro -->
-            <h2 style="font-family: var(--font-title); font-weight: 700; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.2; letter-spacing: -1px; margin-bottom: 24px; color: var(--text-main); text-align: left;">
+            <div class="eyebrow reveal">Mon parcours</div>
+            <h2 class="reveal" style="margin-bottom: 24px; text-align: left;">
                 Qui suis-je ?
             </h2>
-            
+
             <!-- Structure Flexbox adaptative Ordinateur / Mobile pour intégrer votre photo -->
-            <div style="display: flex; gap: clamp(24px, 4vw, 48px); align-items: flex-start; flex-wrap: wrap; max-width: 100%; margin-bottom: 32px;">
+            <div class="reveal" style="display: flex; gap: clamp(24px, 4vw, 48px); align-items: flex-start; flex-wrap: wrap; max-width: 100%; margin-bottom: 32px;">
                 
                 <!-- Bloc de texte biographique principal en Josefin Sans, noir doux, aucun gras -->
                 <div style="flex: 2; min-width: 280px; font-family: var(--font-body); font-size: var(--text-base); line-height: var(--lh-body); color: var(--text-main); font-weight: 400;">
@@ -587,39 +908,35 @@
                     Mes valeurs
                 </h3>
                 
-                <!-- Liste descriptive des valeurs en Josefin Sans, aucun gras -->
-                <ul style="list-style: none; padding-left: 0; margin-bottom: 24px; font-family: var(--font-body); font-size: var(--text-base); line-height: var(--lh-body); font-weight: 400; color: var(--text-main);">
-                    
-                    <!-- Aventure : Panforte pro bold, corail vif, taille 14 -->
-                    <li style="margin-bottom: var(--space-para);">
-                        <span style="font-family: var(--font-title); font-weight: 700; color: var(--accent-color); font-size: 14px; display: block; margin-bottom: 4px;">Aventure</span>
-                        Explorer de nouveaux horizons, utiliser l’audace dans l’inconnu, faire preuve de créativité forte pour faire face à de nouveaux défis complexes.
-                    </li>
-                    
-                    <!-- Altruisme : Panforte pro bold, corail vif, taille 14 -->
-                    <li style="margin-bottom: var(--space-para);">
-                        <span style="font-family: var(--font-title); font-weight: 700; color: var(--accent-color); font-size: 14px; display: block; margin-bottom: 4px;">Altruisme</span>
-                        Agir pour l’impact collectif, s’ouvrir avec curiosité, faciliter les connexions de réseaux différents, partager avec le cœur, mutualiser les difficultés, se soutenir dans l’entraide.
-                    </li>
-                    
-                    <!-- Sagesse : Panforte pro bold, corail vif, taille 14 -->
-                    <li style="margin-bottom: var(--space-para);">
-                        <span style="font-family: var(--font-title); font-weight: 700; color: var(--accent-color); font-size: 14px; display: block; margin-bottom: 4px;">Sagesse</span>
-                        Prendre du recul, s’adapter, être attentive aux signaux faibles, être sincère et simplement humaine.
-                    </li>
-                    
-                    <!-- Enthousiasme : Panforte pro bold, corail vif, taille 14 -->
-                    <li style="margin-bottom: 0;">
-                        <span style="font-family: var(--font-title); font-weight: 700; color: var(--accent-color); font-size: 14px; display: block; margin-bottom: 4px;">Enthousiasme</span>
-                        Embarquer avec énergie, optimisme et légèreté, agir proactivement, leader avec dynamisme.
-                    </li>
-                </ul>
+                <!-- Les 4 valeurs présentées en grille de cartes -->
+                <div class="values-grid reveal" style="margin-bottom: 28px; text-align: left; font-family: var(--font-body); font-size: var(--text-base); line-height: var(--lh-body); font-weight: 400; color: var(--text-main);">
 
-                <!-- Ma boussole : Intitulé Panforte pro bold noir taille 16 | Devises Panforte pro corail vif taille 14 -->
-                <div style="border-top: 1px dashed var(--bg-secondaire); padding-top: 16px; margin-top: 20px;">
+                    <div class="value-card">
+                        <span class="value-name">Aventure</span>
+                        Explorer de nouveaux horizons, utiliser l’audace dans l’inconnu, faire preuve de créativité forte pour faire face à de nouveaux défis complexes.
+                    </div>
+
+                    <div class="value-card">
+                        <span class="value-name">Altruisme</span>
+                        Agir pour l’impact collectif, s’ouvrir avec curiosité, faciliter les connexions de réseaux différents, partager avec le cœur, mutualiser les difficultés, se soutenir dans l’entraide.
+                    </div>
+
+                    <div class="value-card">
+                        <span class="value-name">Sagesse</span>
+                        Prendre du recul, s’adapter, être attentive aux signaux faibles, être sincère et simplement humaine.
+                    </div>
+
+                    <div class="value-card">
+                        <span class="value-name">Enthousiasme</span>
+                        Embarquer avec énergie, optimisme et légèreté, agir proactivement, leader avec dynamisme.
+                    </div>
+                </div>
+
+                <!-- Ma boussole : mise en avant sur fond perle -->
+                <div class="reveal" style="background-color: var(--bg-secondaire); border-radius: 8px; padding: 22px 26px; margin-top: 24px; text-align: center;">
                     <p style="margin-bottom: 0; font-size: var(--text-base); font-family: var(--font-body); font-weight: 400; color: var(--text-main);">
-                        <span style="font-family: var(--font-title); font-weight: 700; font-size: var(--text-base);">Ma boussole</span> : 
-                        <span style="font-family: var(--font-title); color: var(--accent-color); font-weight: 700; font-size: 14px; margin-left: 6px;">« Explore, Dare, Impact, Care »</span>
+                        <span style="font-family: var(--font-title); font-weight: 700; font-size: var(--text-base);">Ma boussole</span>
+                        <span style="font-family: var(--font-title); color: var(--accent-color); font-weight: 700; font-size: clamp(16px, 1.8vw, 20px); margin-left: 10px; letter-spacing: 0.5px;">« Explore, Dare, Impact, Care »</span>
                     </p>
                 </div>
 
@@ -630,21 +947,24 @@
   
     <!-- SECTION 5 – ME CONTACTER -->
     <section id="contact" style="background-color: var(--bg-secondaire); padding: 120px 0; border-top: 1px solid var(--bg-secondaire);">
-        <div class="container" style="text-align: center;">
+        <div class="container reveal" style="text-align: center;">
+            <div class="eyebrow" style="justify-content: center;">Travaillons ensemble</div>
             <h2 style="margin-bottom: 24px;">Engager la réflexion</h2>
-            
-            <p style="font-size: 20px; line-height: var(--lh-body); margin: 0 auto 48px auto; max-width: 650px; color: var(--text-main);">
+
+            <p style="font-size: clamp(18px, 2vw, 21px); line-height: var(--lh-body); margin: 0 auto 44px auto; max-width: 650px; color: var(--text-main);">
                 Vous souhaitez échanger sur vos enjeux de transformation systémique, aligner vos contraintes présentes avec l'avenir, ou initier une collaboration ?
             </p>
-            
+
             <!-- Bouton d'action principal utilisant les 10% d'accentuation corail -->
-            <div style="margin-bottom: 24px;">
-                <a href="mailto:hudrybettina@gmail.com" 
-                   style="display: inline-block; background-color: var(--accent-color); color: #ffffff; font-family: var(--font-title); font-weight: 700; font-size: 18px; text-decoration: none; padding: 20px 48px; border-radius: 4px; box-shadow: 0 4px 12px rgba(255, 87, 87, 0.2); transition: transform 0.2s, box-shadow 0.2s;">
+            <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center; margin-bottom: 26px;">
+                <a href="mailto:hudrybettina@gmail.com" class="btn-primary">
                     Me contacter par e-mail
                 </a>
+                <a href="bettina-hudry-gerez-cv.pdf" target="_blank" rel="noopener" class="btn-resource">
+                    ↓&nbsp; Mon CV (PDF)
+                </a>
             </div>
-            
+
             <p style="font-size: 14px; color: var(--text-muted); margin-top: 16px;">
                 Directement à : <span style="font-weight: 500; color: var(--text-main);">hudrybettina@gmail.com</span>
             </p>
@@ -657,6 +977,102 @@
             <p>© 2026 Bettina Hudry — Stratégie, Durabilité &amp; Impact. Tous droits réservés.</p>
         </footer>
     </div>
+
+    <!-- ============================================================= -->
+    <!--  ANIMATIONS ET INTERACTIONS                                   -->
+    <!--  Aucune bibliothèque externe : tout est natif.                -->
+    <!-- ============================================================= -->
+    <script>
+    (function () {
+        "use strict";
+
+        // Respecte le réglage système « réduire les animations »
+        var reduceMotion = window.matchMedia &&
+                           window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        var navbar   = document.getElementById("navbar");
+        var progress = document.getElementById("reading-progress");
+        var navLinks = Array.prototype.slice.call(document.querySelectorAll("nav a"));
+
+        // Associe chaque onglet à sa section (ignore les liens externes)
+        var sections = navLinks
+            .map(function (link) {
+                var id = link.getAttribute("href");
+                if (!id || id.charAt(0) !== "#") { return null; }
+                var el = document.querySelector(id);
+                return el ? { link: link, el: el } : null;
+            })
+            .filter(Boolean);
+
+        // ---- 1. Barre de progression + barre de nav compacte ----
+        function onScroll() {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (progress) {
+                var height = document.documentElement.scrollHeight - window.innerHeight;
+                var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+                progress.style.width = Math.min(100, Math.max(0, pct)) + "%";
+            }
+
+            if (navbar) {
+                navbar.classList.toggle("is-compact", scrollTop > 80);
+            }
+
+            // ---- 2. Onglet actif : la section la plus haute encore visible ----
+            var current = null;
+            var trigger = scrollTop + (window.innerHeight * 0.35);
+            for (var i = 0; i < sections.length; i++) {
+                if (sections[i].el.offsetTop <= trigger) { current = sections[i]; }
+            }
+            navLinks.forEach(function (l) { l.classList.remove("is-active"); });
+            if (current) { current.link.classList.add("is-active"); }
+        }
+
+        // Limite les calculs à un par rafraîchissement d'écran
+        var ticking = false;
+        window.addEventListener("scroll", function () {
+            if (!ticking) {
+                window.requestAnimationFrame(function () { onScroll(); ticking = false; });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        window.addEventListener("resize", onScroll, { passive: true });
+        onScroll();
+
+        // ---- 3. Apparition en fondu des blocs au défilement ----
+        var revealables = document.querySelectorAll(".reveal");
+
+        function revealAll() {
+            Array.prototype.forEach.call(revealables, function (el) {
+                el.classList.add("is-visible");
+            });
+        }
+
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+            // Pas d'animation : tout est visible immédiatement
+            revealAll();
+        } else {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+
+            Array.prototype.forEach.call(revealables, function (el) {
+                observer.observe(el);
+            });
+
+            // FILET DE SÉCURITÉ : si pour une raison quelconque l'observateur
+            // ne se déclenche pas, on affiche tout au bout de 3 secondes.
+            // Mieux vaut une animation manquée qu'un contenu invisible.
+            setTimeout(revealAll, 3000);
+        }
+    })();
+    </script>
 
 </body>
 </html>

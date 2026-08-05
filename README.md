@@ -89,11 +89,56 @@ Toujours dans le même bloc en haut du fichier :
 
 ```css
 --bg-principal: #faf6f0;   /* Fond crème */
---bg-secondaire: #e8e4de;  /* Gris perle (fond de la section Contact) */
+--bg-secondaire: #e8e4de;  /* Gris perle (bandeau chiffres + section Contact) */
 --accent-color: #FF5757;   /* Rouge corail des accents */
+--surface: #fffcf8;        /* Blanc chaud : fond des cartes */
 --text-main: #1c1e21;      /* Texte principal */
 --text-muted: #6e747c;     /* Texte gris des précisions */
 ```
+
+---
+
+## ✨ Les animations
+
+La page comporte quatre effets, tous écrits à la main (aucune bibliothèque
+externe, donc rien à mettre à jour, rien qui puisse casser) :
+
+| Effet | Ce que ça fait |
+|---|---|
+| Barre de progression | Fine ligne corail en haut qui suit l'avancement dans la page |
+| Barre de navigation compacte | La baseline s'efface au défilement pour gagner de la place |
+| Onglet actif | L'onglet de la section en cours se souligne en corail |
+| Apparition en fondu | Les blocs montent doucement quand ils entrent à l'écran |
+
+**Pour ajouter l'effet d'apparition à un nouveau bloc**, ajoute-lui la classe
+`reveal` :
+
+```html
+<div class="reveal"> ... </div>
+```
+
+**Pour retirer un effet d'apparition**, enlève simplement le mot `reveal` de
+la balise.
+
+> 🔒 Sécurité : si le JavaScript ne fonctionne pas chez un visiteur, tout le
+> contenu s'affiche normalement — rien ne peut rester invisible. Et si la
+> personne a activé « réduire les animations » dans les réglages de son
+> système, les effets sont automatiquement désactivés.
+
+---
+
+## 📊 Modifier les chiffres clés
+
+Le bandeau gris sous le titre d'accueil. Cherche `stats-band` dans le fichier :
+
+```html
+<div class="stat">
+    <div class="stat-value">13 ans</div>
+    <div class="stat-label">en conseil en innovation et stratégie…</div>
+</div>
+```
+
+Tu peux en ajouter ou en retirer : la grille se réorganise toute seule.
 
 ---
 
