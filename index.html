@@ -244,7 +244,10 @@
         /* ================= AJUSTEMENTS ADAPTATIFS MOBILE & TABLETTE ================= */
         @media (max-width: 900px) {
             .navbar-content { flex-direction: column; gap: 20px; text-align: center; }
-            .brand-block { align-items: center; }
+            /* Le bloc nom + baseline ne doit plus dépasser de l'écran */
+            .brand-block { align-items: center; max-width: 100%; }
+            /* Les onglets passent à la ligne au lieu de sortir de l'écran */
+            nav { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
             nav a { margin: 0 12px; }
             body { padding-top: 180px; }
             html { scroll-padding-top: 200px; }
@@ -654,3 +657,6 @@
             <p>© 2026 Bettina Hudry — Stratégie, Durabilité &amp; Impact. Tous droits réservés.</p>
         </footer>
     </div>
+
+</body>
+</html>
