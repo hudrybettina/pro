@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bettina Hudry — Durabilité & Stratégie Systémique</title>
+    <title>Bettina Hudry — Durabilité &amp; Stratégie Systémique</title>
     
-    <!-- Importation des polices demandées -->
+    <!-- Importation des polices du Design System -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <!-- Panforte Pro n'étant pas sur Google Fonts, on utilise 'Amatic SC' ou 'Cabin Sketch' comme équivalents si besoin, ou on déclare la règle CSS. Ici nous chargeons 'Josefin Sans' et 'Space Grotesk' (alternative moderne proche de Panforte pour le web). Pour coller exactement au rendu de votre fonte Titre à fort caractère, nous chargeons 'Outfit' en gras ou équivalent disponible. Remplacé ici par l'importation de Josefin Sans. -->
     <link href="https://googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* DESIGN SYSTEM UNIQUE */
+        /* DESIGN SYSTEM STRICT & ET REFINÉ */
         :root {
             --bg-principal: #faf6f0;    /* Blanc cassé chaud / Crème (60%) */
             --bg-secondaire: #e8e4de;   /* Gris perle chaud (30%) */
             --accent-color: #FF5757;    /* Couleur d'accent corail (10%) */
             --text-main: #1c1e21;       /* Presque noir */
             --text-muted: #6e747c;      /* Gris moyen */
-            --font-title: 'Space Grotesk', 'Panforte pro', sans-serif; /* Panforte Pro si installé locale + fallback */
+            --font-title: 'Space Grotesk', sans-serif;
             --font-body: 'Josefin Sans', sans-serif;
         }
 
@@ -27,6 +26,11 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Défilement fluide lors du clic sur le menu */
+            scroll-padding-top: 120px; /* Évite que la barre de navigation fixe ne cache le titre de la section */
         }
 
         body {
@@ -37,6 +41,7 @@
             color: var(--text-main);
             background-color: var(--bg-principal);
             overflow-x: hidden;
+            padding-top: 100px; /* Compense la hauteur du menu fixe pour ne pas écraser l'accueil */
         }
 
         .container {
@@ -45,20 +50,31 @@
             padding: 0 32px;
         }
 
-        /* En-tête épuré */
-        header {
-            padding: 40px 0;
+        /* BARRE DE NAVIGATION FIXE (STICKY) */
+        .navbar-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-principal);
+            border-bottom: 1px solid var(--bg-secondaire);
+            z-index: 1000; /* Reste toujours au-dessus du reste du contenu */
+            padding: 24px 0;
+        }
+
+        .navbar-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--bg-secondaire);
         }
 
         .brand-name {
             font-family: var(--font-title);
             font-weight: 700;
-            font-size: 28px;
+            font-size: 24px;
             letter-spacing: -0.5px;
+            color: var(--text-main);
+            text-decoration: none;
         }
 
         nav a {
@@ -74,50 +90,30 @@
             color: var(--accent-color);
         }
 
-        /* Espacements généreux demandés (100px) */
-        section {
-            padding: 100px 0;
+        /* SECTION ACCUEIL ÉPURÉE (SANS REDITES) */
+        .hero-section {
+            padding: 120px 0 80px 0; /* Espacement généreux */
         }
 
-        /* Hiérarchie typographique stricte */
         h1 {
             font-family: var(--font-title);
             font-weight: 700;
-            font-size: 64px;
-            line-height: 1.1;
+            font-size: 56px;
+            line-height: 1.15;
             letter-spacing: -1px;
-            margin-bottom: 24px;
+            color: var(--text-main);
+            margin-bottom: 16px;
         }
 
-        h2 {
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: 48px;
-            line-height: 1.2;
-            margin-bottom: 40px;
-        }
-
-        h3 {
-            font-family: var(--font-title);
+        .hero-subtitle {
+            font-size: 24px;
+            color: var(--text-muted);
             font-weight: 500;
-            font-size: 32px;
-            line-height: 1.3;
-            margin: 48px 0 24px 0;
-        }
-
-        p {
-            margin-bottom: 24px;
+            margin-bottom: 56px;
             max-width: 800px;
         }
 
-        .subtitle {
-            font-size: 24px;
-            color: var(--text-muted);
-            margin-bottom: 48px;
-            max-width: 750px;
-        }
-
-        /* Banderole Accueil Structurée */
+        /* Banderole Devise Exclusive */
         .banderole-boussole {
             background-color: var(--bg-secondaire);
             padding: 48px;
@@ -125,125 +121,47 @@
             font-family: var(--font-title);
             font-weight: 700;
             font-size: 32px;
-            line-height: 1.3;
-            margin-top: 40px;
-        }
-
-        /* Listes épurées sans fioritures */
-        ul {
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        li {
-            margin-bottom: 16px;
-            padding-left: 28px;
-            position: relative;
-        }
-
-        li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        .realisation-item {
-            margin-bottom: 32px;
-        }
-
-        .tag-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            font-weight: 500;
-            display: block;
-            margin-top: 4px;
-        }
-
-        /* Encadré Valeurs aux lignes raffinées */
-        .encadre-valeurs {
-            border: 2px solid var(--accent-color);
+            line-height: 1.35;
             color: var(--text-main);
-            padding: 32px;
-            border-radius: 4px;
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: 24px;
-            margin-top: 48px;
-            display: inline-block;
-        }
-
-        /* Bouton Contact Principal */
-        .btn-contact {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #ffffff;
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: 18px;
-            padding: 16px 40px;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: opacity 0.2s, transform 0.2s;
-            margin-top: 24px;
-        }
-
-        .btn-contact:hover {
-            transform: translateY(-1px);
-            opacity: 0.9;
-        }
-
-        .link-accent {
-            color: var(--text-main);
-            font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: var(--accent-color);
-            text-decoration-thickness: 2px;
-        }
-
-        /* Pied de page */
-        footer {
-            padding: 80px 0;
-            border-top: 1px solid var(--bg-secondaire);
-            font-size: 14px;
-            color: var(--text-muted);
-            text-align: center;
         }
 
         /* Adaptabilité Mobile */
         @media (max-width: 768px) {
-            h1 { font-size: 40px; }
-            h2 { font-size: 32px; }
-            h3 { font-size: 24px; }
-            .banderole-boussole { font-size: 22px; padding: 32px; }
-            section { padding: 80px 0; }
-            header { flex-direction: column; gap: 20px; text-align: center; }
+            body { padding-top: 140px; }
+            .navbar-fixed { padding: 16px 0; }
+            .navbar-content { flex-direction: column; gap: 16px; text-align: center; }
             nav a { margin: 0 12px; }
+            h1 { font-size: 38px; }
+            .hero-subtitle { font-size: 20px; margin-bottom: 40px; }
+            .banderole-boussole { font-size: 22px; padding: 32px; }
+            .hero-section { padding: 60px 0 40px 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATOR / MENU -->
-    <div class="container">
-        <header>
-            <div class="brand-name">Bettina Hudry</div>
-            <nav>
-                <a href="#vision">Vision</a>
-                <a href="#offre">Offre</a>
-                <a href="#qui-suis-je">Profil</a>
-                <a href="#valeurs">Valeurs</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </header>
+    <!-- BARRE DE NAVIGATION STRUCTURÉE ET FIXE -->
+    <div class="navbar-fixed">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="#accueil" class="brand-name">Bettina Hudry</a>
+                <nav>
+                    <a href="#vision">Vision</a>
+                    <a href="#offre">Offre</a>
+                    <a href="#projets">Expériences</a>
+                    <a href="#valeurs">Valeurs</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
     </div>
 
-    <!-- SECTION 0 – ACCUEIL -->
-    <section id="accueil" style="padding-top: 80px; padding-bottom: 40px;">
+    <!-- NOUVELLE SECTION ACCUEIL NETTE -->
+    <section id="accueil" class="hero-section">
         <div class="container">
-            <h1>Bettina Hudry</h1>
-            <p class="subtitle">Transformation de modèles économiques & Durabilité stratégique.</p>
+            <h1>Transformation de modèles économiques &amp; Durabilité stratégique</h1>
+            <p class="hero-subtitle">Poser un regard différent sur la création de valeur pour pérenniser les organisations.</p>
+            
             <div class="banderole-boussole">
                 « Transformer les enjeux de durabilité en activités viables et créatrices de valeur. »
             </div>
