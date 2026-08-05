@@ -6,9 +6,9 @@
     <title>Bettina Hudry-Gerez — Durabilité &amp; Stratégie Systémique</title>
     
     <!-- Chargement officiel des polices du Design System -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         /* DESIGN SYSTEM STRICT & REFINÉ */
@@ -18,7 +18,8 @@
             --accent-color: #FF5757;    /* Rouge Corail vif d'accentuation (10%) */
             --text-main: #1c1e21;       /* Presque noir */
             --text-muted: #6e747c;      /* Gris moyen */
-            --font-title: 'Space Grotesk', 'Panforte pro', sans-serif;
+            /* Panforte pro déclarée en premier, Space Grotesk sert de secours web si non installée en local */
+            --font-title: 'Panforte pro', 'Space Grotesk', sans-serif;
             --font-body: 'Josefin Sans', sans-serif;
         }
 
@@ -69,7 +70,6 @@
             gap: 40px;
         }
 
-        /* Identité de marque sans redite */
         .brand-block {
             display: flex;
             flex-direction: column;
@@ -77,7 +77,7 @@
             max-width: 650px;
         }
 
-        /* MODIFICATION : Nom forcé en police Panforte pro / Space Grotesk */
+        /* Nom forcé en Panforte pro (var(--font-title)) */
         .brand-name {
             font-family: var(--font-title);
             font-weight: 700;
@@ -88,21 +88,23 @@
             line-height: 1.2;
         }
 
-        /* Boussole forcée en Presque Noir */
+        /* Boussole forcée en Josefin Sans et Presque Noir */
         .brand-tagline {
+            font-family: var(--font-body);
             font-size: 13px;
             color: var(--text-main);
             font-weight: 500;
             line-height: 1.4;
         }
 
-        /* Onglets permanents */
+        /* Onglets permanents en Josefin Sans */
         nav {
             display: flex;
             align-items: center;
         }
 
         nav a {
+            font-family: var(--font-body);
             color: var(--text-main);
             text-decoration: none;
             font-weight: 500;
@@ -121,7 +123,7 @@
             padding: 160px 0 120px 0; /* Grands espaces blancs du protocole */
         }
 
-        /* Titre principal fluide : Tient sur une seule ligne sur grand écran */
+        /* Titre principal fluide en Panforte pro : Tient sur une seule ligne sur grand écran */
         h1 {
             font-family: var(--font-title);
             font-weight: 700;
@@ -133,8 +135,9 @@
             white-space: nowrap;
         }
 
-        /* Ligne d'accroche fluide : Tient sur une seule ligne sur grand écran */
+        /* Ligne d'accroche fluide en Josefin Sans : Tient sur une seule ligne sur grand écran */
         .hero-single-line {
+            font-family: var(--font-body);
             font-size: clamp(18px, 1.8vw, 24px); /* Taille dynamique auto-adaptative */
             color: var(--text-muted);
             font-weight: 500;
@@ -142,7 +145,7 @@
             margin-bottom: 0;
         }
 
-        /* Mots accentués en rouge corail vif */
+        /* Mots accentués en rouge corail vif ET en gras */
         .highlight-corail {
             color: var(--accent-color);
             font-weight: 700;
@@ -150,40 +153,22 @@
 
         /* ================= AJUSTEMENTS ADAPTATIFS MOBILE & TABLETTE ================= */
         @media (max-width: 1200px) {
-            /* Dès que l'écran rétrécit, on lève la contrainte de la ligne unique pour éviter que le texte sorte de l'écran */
             h1, .hero-single-line {
                 white-space: normal; 
             }
         }
 
         @media (max-width: 900px) {
-            .navbar-content {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            .brand-block {
-                align-items: center;
-            }
-            nav a {
-                margin: 0 12px;
-            }
-            body {
-                padding-top: 180px; /* Compense la hauteur du menu empilé sur mobile */
-            }
-            html {
-                scroll-padding-top: 200px;
-            }
+            .navbar-content { flex-direction: column; gap: 20px; text-align: center; }
+            .brand-block { align-items: center; }
+            nav a { margin: 0 12px; }
+            body { padding-top: 180px; }
+            html { scroll-padding-top: 200px; }
         }
 
         @media (max-width: 480px) {
-            .hero-section {
-                padding: 100px 0 60px 0;
-            }
-            nav a {
-                font-size: 14px;
-                margin: 0 8px;
-            }
+            .hero-section { padding: 100px 0 60px 0; }
+            nav a { font-size: 14px; margin: 0 8px; }
         }
     </style>
 </head>
@@ -222,50 +207,53 @@
     <section id="vision" style="padding: 16px 0; background-color: var(--bg-principal);">
         <div class="container" style="text-align: justify; text-justify: inter-word;">
             
-            <!-- Titre calé sur la taille fluide exacte du titre d'accueil -->
+            <!-- Titre en Panforte pro, taille fluide identique à l'accueil -->
             <h2 style="font-family: var(--font-title); font-weight: 700; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.2; letter-spacing: -1px; margin-bottom: 16px; color: var(--text-main); text-align: left;">
                 Une Vision
             </h2>
             
-            <!-- Paragraphes principaux compacts avec sauts à 16px -->
-            <div style="max-width: 100%; margin-bottom: 16px; font-size: 16px; line-height: 1.5;">
-                <p style="margin-bottom: 16px; color: var(--text-main);">
+            <!-- Paragraphes principaux en Josefin Sans, aucun gras sauf corail -->
+            <div style="max-width: 100%; margin-bottom: 16px; font-size: 16px; line-height: 1.5; font-family: var(--font-body);">
+                <p style="margin-bottom: 16px; color: var(--text-main); font-weight: 400;">
                     Les enjeux environnementaux <em style="color: var(--text-muted); font-style: italic;">(pénurie des ressources matérielles, concurrence en eau, appauvrissement de la santé des sols, fluctuations rapides du climat…)</em> et sociaux sont une formidable <span class="highlight-corail" style="font-weight: 700;">boussole stratégique pour innover</span> sur le modèle actuel afin d’être économiquement viable aujourd’hui et demain.
                 </p>
                 
-                <p style="margin-bottom: 16px; color: var(--text-main);">
+                <p style="margin-bottom: 16px; color: var(--text-main); font-weight: 400;">
                     Les entreprises encore présentes demain auront su faire évoluer dès aujourd’hui leur modèle économique avant de subir ces risques qui s’intensifient, s’accélèrent voire arrivent de plus en plus en simultané dans un monde fluctuant.
                 </p>
                 
-                <p style="margin-bottom: 16px; color: var(--text-main);">
+                <p style="margin-bottom: 16px; color: var(--text-main); font-weight: 400;">
                     Ces transformations profondes nécessitent aussi quelques ajustements :
                 </p>
             </div>
 
-            <!-- Ajustements décalés pleine largeur avec puces minimalistes -->
-            <div style="padding-left: clamp(12px, 2.5vw, 24px); max-width: 100%; border-left: 2px solid var(--bg-secondaire); font-size: 16px; line-height: 1.5;">
+            <!-- Ajustements décalés en Josefin Sans, puces corail, aucun gras sauf corail -->
+            <div style="padding-left: clamp(12px, 2.5vw, 24px); max-width: 100%; border-left: 2px solid var(--bg-secondaire); font-size: 16px; line-height: 1.5; font-family: var(--font-body);">
                 
-                <!-- Nouvel élément inséré -->
-                <div style="margin-bottom: 16px;">
-                    <p style="margin-bottom: 0; color: var(--text-main);">
-                        <span style="color: var(--accent-color); margin-right: 6px;">•</span>D'expérimenter avec le <span class="highlight-corail" style="font-weight: 700;">minimum de risques et de temps</span> pris sur le présent.
+                <!-- Ajustement 1 -->
+                <div style="margin-bottom: 16px; color: var(--text-main); font-weight: 400;">
+                    <p style="margin-bottom: 0;">
+                        <span style="color: var(--accent-color); margin-right: 6px;">•</span>D'expérimenter avec le minimum de risques et de temps pris sur le présent.
                     </p>
                 </div>
 
-                <div style="margin-bottom: 16px;">
-                    <p style="margin-bottom: 0; color: var(--text-main);">
+                <!-- Ajustement 2 -->
+                <div style="margin-bottom: 16px; color: var(--text-main); font-weight: 400;">
+                    <p style="margin-bottom: 0;">
                         <span style="color: var(--accent-color); margin-right: 6px;">•</span>D’utiliser une <span class="highlight-corail" style="font-weight: 700;">boussole systémique</span> : Elle permet de prendre de meilleures décisions en reliant les enjeux économiques, environnementaux et humains au lieu de les traiter séparément. Elle permet de déceler les potentiels d’impact positifs insoupçonnés de projets déjà existants.
                     </p>
                 </div>
                 
-                <div style="margin-bottom: 16px;">
-                    <p style="margin-bottom: 0; color: var(--text-main);">
+                <!-- Ajustement 3 -->
+                <div style="margin-bottom: 16px; color: var(--text-main); font-weight: 400;">
+                    <p style="margin-bottom: 0;">
                         <span style="color: var(--accent-color); margin-right: 6px;">•</span>De coopérer avec <span class="highlight-corail" style="font-weight: 700;">l’écosystème</span> : Tant sur la chaîne de valeur que sur le territoire, ces coopérations permettent de dérisquer, gagner en temps, en coût et assurer une robustesse des actions.
                     </p>
                 </div>
                 
-                <div style="margin-bottom: 0; color: var(--text-main);">
-                    <p style="margin-bottom: 0; color: var(--text-main);">
+                <!-- Ajustement 4 -->
+                <div style="margin-bottom: 0; color: var(--text-main); font-weight: 400;">
+                    <p style="margin-bottom: 0;">
                         <span style="color: var(--accent-color); margin-right: 6px;">•</span>De capitaliser sur <span class="highlight-corail" style="font-weight: 700;">l’intelligence collective</span> : La diversité de profils permet d’élargir les horizons, réduire les angles morts pour aller plus vite, plus loin et avec plus d’impact.
                     </p>
                 </div>
