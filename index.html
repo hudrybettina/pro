@@ -2,55 +2,272 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Bettina Hudry - Transformer les enjeux de durabilité en activités viables et créatrices de valeur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bettina Hudry — Durabilité & Stratégie Systémique</title>
+    
+    <!-- Importation des polices demandées -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <!-- Panforte Pro n'étant pas sur Google Fonts, on utilise 'Amatic SC' ou 'Cabin Sketch' comme équivalents si besoin, ou on déclare la règle CSS. Ici nous chargeons 'Josefin Sans' et 'Space Grotesk' (alternative moderne proche de Panforte pour le web). Pour coller exactement au rendu de votre fonte Titre à fort caractère, nous chargeons 'Outfit' en gras ou équivalent disponible. Remplacé ici par l'importation de Josefin Sans. -->
+    <link href="https://googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* DESIGN SYSTEM UNIQUE */
+        :root {
+            --bg-principal: #faf6f0;    /* Blanc cassé chaud / Crème (60%) */
+            --bg-secondaire: #e8e4de;   /* Gris perle chaud (30%) */
+            --accent-color: #FF5757;    /* Couleur d'accent corail (10%) */
+            --text-main: #1c1e21;       /* Presque noir */
+            --text-muted: #6e747c;      /* Gris moyen */
+            --font-title: 'Space Grotesk', 'Panforte pro', sans-serif; /* Panforte Pro si installé locale + fallback */
+            --font-body: 'Josefin Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-main);
+            background-color: var(--bg-principal);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* En-tête épuré */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--bg-secondaire);
+        }
+
+        .brand-name {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 28px;
+            letter-spacing: -0.5px;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            margin-left: 32px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Espacements généreux demandés (100px) */
+        section {
+            padding: 100px 0;
+        }
+
+        /* Hiérarchie typographique stricte */
+        h1 {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 64px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-family: var(--font-title);
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 1.3;
+            margin: 48px 0 24px 0;
+        }
+
+        p {
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            max-width: 750px;
+        }
+
+        /* Banderole Accueil Structurée */
+        .banderole-boussole {
+            background-color: var(--bg-secondaire);
+            padding: 48px;
+            border-radius: 4px;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 1.3;
+            margin-top: 40px;
+        }
+
+        /* Listes épurées sans fioritures */
+        ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        li {
+            margin-bottom: 16px;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .realisation-item {
+            margin-bottom: 32px;
+        }
+
+        .tag-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* Encadré Valeurs aux lignes raffinées */
+        .encadre-valeurs {
+            border: 2px solid var(--accent-color);
+            color: var(--text-main);
+            padding: 32px;
+            border-radius: 4px;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 24px;
+            margin-top: 48px;
+            display: inline-block;
+        }
+
+        /* Bouton Contact Principal */
+        .btn-contact {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 18px;
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: opacity 0.2s, transform 0.2s;
+            margin-top: 24px;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .link-accent {
+            color: var(--text-main);
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: var(--accent-color);
+            text-decoration-thickness: 2px;
+        }
+
+        /* Pied de page */
+        footer {
+            padding: 80px 0;
+            border-top: 1px solid var(--bg-secondaire);
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* Adaptabilité Mobile */
+        @media (max-width: 768px) {
+            h1 { font-size: 40px; }
+            h2 { font-size: 32px; }
+            h3 { font-size: 24px; }
+            .banderole-boussole { font-size: 22px; padding: 32px; }
+            section { padding: 80px 0; }
+            header { flex-direction: column; gap: 20px; text-align: center; }
+            nav a { margin: 0 12px; }
+        }
+    </style>
 </head>
 <body>
 
     <!-- NAVIGATOR / MENU -->
-    <header>
-        <h1>Bettina Hudry</h1>
-        <p><em>Transformation de modèles économiques & Durabilité stratégique</em></p>
-        <nav>
-            <a href="#accueil">Accueil</a> | 
-            <a href="#vision">Une Vision</a> | 
-            <a href="#offre">Mon Offre</a> | 
-            <a href="#projets">Quelques Projets</a> | 
-            <a href="#qui-suis-je">Qui suis-je</a> | 
-            <a href="#valeurs">Mes Valeurs</a> | 
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <div class="container">
+        <header>
+            <div class="brand-name">Bettina Hudry</div>
+            <nav>
+                <a href="#vision">Vision</a>
+                <a href="#offre">Offre</a>
+                <a href="#qui-suis-je">Profil</a>
+                <a href="#valeurs">Valeurs</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+    </div>
 
-    <hr>
-
-    <!-- SECTION 0 – PAGE D’ACCUEIL -->
-    <section id="accueil">
-        <div style="background-color: #f0f4f8; padding: 20px; border-left: 5px solid #0056b3;">
-            <h2>Notre Boussole</h2>
-            <p><strong>« Transformer les enjeux de durabilité en activités viables et créatrices de valeur. »</strong></p>
+    <!-- SECTION 0 – ACCUEIL -->
+    <section id="accueil" style="padding-top: 80px; padding-bottom: 40px;">
+        <div class="container">
+            <h1>Bettina Hudry</h1>
+            <p class="subtitle">Transformation de modèles économiques & Durabilité stratégique.</p>
+            <div class="banderole-boussole">
+                « Transformer les enjeux de durabilité en activités viables et créatrices de valeur. »
+            </div>
         </div>
     </section>
 
-    <hr>
-
     <!-- SECTION 1 – UNE VISION -->
     <section id="vision">
-        <h2>Une Vision</h2>
-        <p>Les enjeux environnementaux (pénurie des ressources matérielles, concurrence en eau, appauvrissement de la santé des sols, fluctuations rapides du climat…) et sociaux sont une formidable boussole pour innover sur le modèle actuel afin d’être économiquement viable aujourd’hui et demain, et poser un regard différent sur la création de valeur pour toutes les parties prenantes.</p>
-        <p>La durabilité is donc une boussole stratégique pour pérenniser l’entreprise face à ces risques dont dépend le modèle économique actuel, et qui s’intensifient, s’accélèrent voire arrivent de plus en plus en simultané dans un monde fluctuant.</p>
-        <p>Les entreprises qui seront encore présentes demain seront celles qui auront su faire évoluer dès aujourd’hui leur modèle économique avant de subir ces risques.</p>
-        
-        <h3>Ces transformations profondes nécessitent quelques ajustements :</h3>
-        <ul>
-            <li><strong>D’utiliser une boussole systémique :</strong> Elle permet de prendre de meilleures décisions en reliant les enjeux économiques, environnementaux et humains au lieu de les traiter séparément. Elle permet de déceler les potentiels d’impact positifs insoupçonnés de projets déjà existants.</li>
-            <li><strong>De coopérer avec l’écosystème :</strong> Tant sur la chaîne de valeur que sur le territoire, ces coopérations permettent de dérisquer, gagner en temps, en coût et assurer une robustesse des actions.</li>
-            <li><strong>De capitaliser sur l’intelligence collective :</strong> La diversité de profils permet d’élargir les horizons, réduire les angles morts pour aller plus vite, plus loin et avec plus d’impact.</li>
-        </ul>
+        <div class="container">
+            <h2>Une Vision</h2>
+            <p>Les enjeux environnementaux (pénurie des ressources matérielles, concurrence en eau, appauvrissement de la santé des sols, fluctuations rapides du climat…) et sociaux sont une formidable boussole pour innover sur le modèle actuel afin d’être économiquement viable aujourd’hui et demain, et poser un regard différent sur la création de valeur pour toutes les parties prenantes.</p>
+            <p>La durabilité est donc une boussole stratégique pour pérenniser l’entreprise face à ces risques dont dépend le modèle économique actuel, et qui s’intensifient, s’accélèrent voire arrivent de plus en plus en simultané dans un monde fluctuant.</p>
+            <p>Les entreprises qui seront encore présentes demain seront celles qui auront su faire évoluer dès aujourd’hui leur modèle économique avant de subir ces risques.</p>
+            
+            <h3>Ces transformations profondes nécessitent quelques ajustements :</h3>
+            <ul>
+                <li><strong>D’utiliser une boussole systémique :</strong> Elle permet de prendre de meilleures décisions en reliant les enjeux économiques, environnementaux et humains au lieu de les traiter séparément. Elle permet de déceler les potentiels d’impact positifs insoupçonnés de projets déjà existants.</li>
+                <li><strong>De coopérer avec l’écosystème :</strong> Tant sur la chaîne de valeur que sur le territoire, ces coopérations permettent de dérisquer, gagner en temps, en coût et assurer une robustesse des actions.</li>
+                <li><strong>De capitaliser sur l’intelligence collective :</strong> La diversité de profils permet d’élargir les horizons, réduire les angles morts pour aller plus vite, plus loin et avec plus d’impact.</li>
+            </ul>
+        </div>
     </section>
 
-    <hr>
-
-    <!-- SECTION 2 – MON OFFRE -->
+  <!-- SECTION 2 – MON OFFRE -->
     <section id="offre">
         <h2>Mon Offre</h2>
         <p><strong>Préparer l’avenir sans fragiliser la solidité économique actuelle :</strong> J’aide les entreprises dans leur transformation de modèles pour allier contraintes économiques du présent avec pérennité de l’entreprise et faire des enjeux environnementaux et sociaux, un véritable levier d’opportunités de création de valeur.</p>
