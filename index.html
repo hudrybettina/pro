@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bettina Hudry — Durabilité &amp; Stratégie Systémique</title>
+    <title>Bettina Hudry-Gerez — Durabilité &amp; Stratégie Systémique</title>
     
-    <!-- Importation des polices du Design System -->
+    <!-- Chargement officiel des polices du Design System -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* DESIGN SYSTEM STRICT & ET REFINÉ */
+        /* DESIGN SYSTEM STRICT & REFINÉ */
         :root {
             --bg-principal: #faf6f0;    /* Blanc cassé chaud / Crème (60%) */
             --bg-secondaire: #e8e4de;   /* Gris perle chaud (30%) */
-            --accent-color: #FF5757;    /* Couleur d'accent corail (10%) */
+            --accent-color: #FF5757;    /* Rouge Corail d'accentuation (10%) */
             --text-main: #1c1e21;       /* Presque noir */
             --text-muted: #6e747c;      /* Gris moyen */
-            --font-title: 'Space Grotesk', sans-serif;
+            --font-title: 'Space Grotesk', 'Panforte pro', sans-serif;
             --font-body: 'Josefin Sans', sans-serif;
         }
 
@@ -29,8 +29,8 @@
         }
 
         html {
-            scroll-behavior: smooth; /* Défilement fluide lors du clic sur le menu */
-            scroll-padding-top: 120px; /* Évite que la barre de navigation fixe ne cache le titre de la section */
+            scroll-behavior: smooth;
+            scroll-padding-top: 140px; /* Aligne le haut des sections sous le grand menu fixe */
         }
 
         body {
@@ -41,16 +41,16 @@
             color: var(--text-main);
             background-color: var(--bg-principal);
             overflow-x: hidden;
-            padding-top: 100px; /* Compense la hauteur du menu fixe pour ne pas écraser l'accueil */
+            padding-top: 120px; /* Laisse l'espace nécessaire pour la barre fixe supérieure */
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1140px;
             margin: 0 auto;
             padding: 0 32px;
         }
 
-        /* BARRE DE NAVIGATION FIXE (STICKY) */
+        /* BARRE DE NAVIGATION FIXE (STICKY BANNER) */
         .navbar-fixed {
             position: fixed;
             top: 0;
@@ -58,14 +58,22 @@
             width: 100%;
             background-color: var(--bg-principal);
             border-bottom: 1px solid var(--bg-secondaire);
-            z-index: 1000; /* Reste toujours au-dessus du reste du contenu */
-            padding: 24px 0;
+            z-index: 1000;
+            padding: 20px 0;
         }
 
         .navbar-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        /* Identité de marque sans redite */
+        .brand-block {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            max-width: 600px;
         }
 
         .brand-name {
@@ -75,8 +83,17 @@
             letter-spacing: -0.5px;
             color: var(--text-main);
             text-decoration: none;
+            line-height: 1.2;
         }
 
+        .brand-tagline {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        /* Liens de l'onglet permanent */
         nav a {
             color: var(--text-main);
             text-decoration: none;
@@ -90,61 +107,65 @@
             color: var(--accent-color);
         }
 
-        /* SECTION ACCUEIL ÉPURÉE (SANS REDITES) */
+        /* SECTION ACCUEIL MINIMALISTE HAUT DE GAMME */
         .hero-section {
-            padding: 120px 0 80px 0; /* Espacement généreux */
+            padding: 140px 0 100px 0; /* Espacement généreux */
         }
 
         h1 {
             font-family: var(--font-title);
             font-weight: 700;
-            font-size: 56px;
+            font-size: 64px;
             line-height: 1.15;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
             color: var(--text-main);
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
-        .hero-subtitle {
-            font-size: 24px;
+        /* Ligne d'accroche forcée sur une ligne unique sur ordinateur */
+        .hero-single-line {
+            font-size: 22px;
             color: var(--text-muted);
             font-weight: 500;
-            margin-bottom: 56px;
-            max-width: 800px;
+            white-space: nowrap; 
+            margin-bottom: 0;
         }
 
-        /* Banderole Devise Exclusive */
-        .banderole-boussole {
-            background-color: var(--bg-secondaire);
-            padding: 48px;
-            border-radius: 4px;
-            font-family: var(--font-title);
+        /* Mot accentué en rouge corail pour le dynamisme */
+        .highlight-action {
+            color: var(--accent-color);
             font-weight: 700;
-            font-size: 32px;
-            line-height: 1.35;
-            color: var(--text-main);
         }
 
-        /* Adaptabilité Mobile */
+        /* Adaptabilité Mobile et Tablettes */
+        @media (max-width: 992px) {
+            .hero-single-line {
+                white-space: normal; /* Permet le retour à la ligne uniquement sur petit écran */
+            }
+        }
+
         @media (max-width: 768px) {
-            body { padding-top: 140px; }
+            body { padding-top: 160px; }
             .navbar-fixed { padding: 16px 0; }
             .navbar-content { flex-direction: column; gap: 16px; text-align: center; }
+            .brand-block { align-items: center; text-align: center; }
             nav a { margin: 0 12px; }
-            h1 { font-size: 38px; }
-            .hero-subtitle { font-size: 20px; margin-bottom: 40px; }
-            .banderole-boussole { font-size: 22px; padding: 32px; }
-            .hero-section { padding: 60px 0 40px 0; }
+            h1 { font-size: 36px; }
+            .hero-single-line { font-size: 18px; }
+            .hero-section { padding: 80px 0 40px 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRE DE NAVIGATION STRUCTURÉE ET FIXE -->
+    <!-- BARRE DE NAVIGATION PERMANENTE ET FIXE -->
     <div class="navbar-fixed">
         <div class="container">
             <div class="navbar-content">
-                <a href="#accueil" class="brand-name">Bettina Hudry</a>
+                <div class="brand-block">
+                    <a href="#accueil" class="brand-name">Bettina Hudry-Gerez</a>
+                    <div class="brand-tagline">« Transformer les enjeux de durabilité en activités viables et créatrices de valeur. »</div>
+                </div>
                 <nav>
                     <a href="#vision">Vision</a>
                     <a href="#offre">Offre</a>
@@ -156,15 +177,13 @@
         </div>
     </div>
 
-    <!-- NOUVELLE SECTION ACCUEIL NETTE -->
+    <!-- SECTION 0 – ACCUEIL ÉPURÉE ET DYNAMIQUE -->
     <section id="accueil" class="hero-section">
         <div class="container">
             <h1>Transformation de modèles économiques &amp; Durabilité stratégique</h1>
-            <p class="hero-subtitle">Poser un regard différent sur la création de valeur pour pérenniser les organisations.</p>
-            
-            <div class="banderole-boussole">
-                « Transformer les enjeux de durabilité en activités viables et créatrices de valeur. »
-            </div>
+            <p class="hero-single-line">
+                Poser un regard différent sur la création de valeur pour <span class="highlight-action">pérenniser</span> les organisations.
+            </p>
         </div>
     </section>
 
