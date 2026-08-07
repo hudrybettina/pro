@@ -49,8 +49,20 @@
 
             --text-base: 17px;    /* Taille du texte courant (paragraphes, puces) */
             --text-small: 15px;   /* Taille des précisions en italique entre parenthèses */
-            --text-lead: 19px;    /* Taille des phrases d'accroche */
             --lh-body: 1.75;      /* Interligne : espace ENTRE les lignes d'un paragraphe */
+
+            /* Phrase d'accroche « Préparer l'avenir sans fragiliser… ».
+               Taille intermédiaire entre le texte courant et les titres. */
+            --text-lead: clamp(19px, 1.9vw, 23px);
+
+            /* Sous-titres : « Mes valeurs », « Ma boussole » */
+            --text-subtitle: clamp(21px, 2.2vw, 27px);
+
+            /* Intitulés en gras : « Contexte d'intervention : », etc. */
+            --text-label: clamp(17px, 1.7vw, 19px);
+
+            /* Noms des valeurs : Aventure, Altruisme, Sagesse, Enthousiasme */
+            --text-value-name: clamp(17px, 1.7vw, 20px);
 
             --space-section: clamp(52px, 4.5vw, 80px); /* Espace vertical entre deux sections */
             --space-block: 32px;  /* Espace entre deux blocs à l'intérieur d'une section */
@@ -472,10 +484,23 @@
             font-family: var(--font-title);
             font-weight: 700;
             color: var(--accent-color);
-            font-size: 15px;
-            letter-spacing: 0.4px;
+            font-size: var(--text-value-name);
+            letter-spacing: 0;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        /* Une ligne par verbe, sans puce : plus lisible qu'une longue phrase */
+        .value-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            font-size: var(--text-base);
+            line-height: 1.45;
+        }
+
+        .value-list li + li {
+            margin-top: 9px;
         }
 
         /* --- Accessibilité : contour visible au clavier --- */
@@ -578,7 +603,7 @@
 
          <!-- SECTION 1 – UNE VISION (PLEINE LARGEUR & ZÉRO DÉFILEMENT) -->
     <section id="vision" style="padding: var(--space-section) 0; background-color: var(--bg-principal);">
-        <div class="container" style="text-align: justify; text-justify: inter-word;">
+        <div class="container" style="text-align: left;">
             
             <!-- Titre en Panforte pro, taille fluide identique à l'accueil -->
             <h2 style="font-family: var(--font-title); font-weight: 700; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.2; letter-spacing: -1px; margin-bottom: var(--space-para); color: var(--text-main); text-align: left;">
@@ -638,7 +663,7 @@
 
        <!-- SECTION 2 – MON OFFRE (100% ADAPTATIVE ORDINATEUR / MOBILE & PLEINE LARGEUR) -->
     <section id="offre" style="padding: var(--space-section) 0; background-color: var(--bg-principal); border-top: 1px solid var(--bg-secondaire);">
-        <div class="container" style="text-align: justify; text-justify: inter-word; font-family: var(--font-body);">
+        <div class="container" style="text-align: left; font-family: var(--font-body);">
             
             <!-- Titre de section principal fluide -->
             <div class="eyebrow reveal">Ce que j'apporte</div>
@@ -648,7 +673,7 @@
 
             <!-- Accroche principale textuelle fusionnée sur la même ligne, sans gras superflu -->
             <div class="reveal" style="max-width: 100%; margin-bottom: 32px; line-height: var(--lh-body);">
-                <p style="font-size: clamp(16px, 1.6vw, 18px); margin-bottom: 14px; text-align: left; color: var(--text-main); font-weight: 500;">
+                <p style="font-size: var(--text-lead); line-height: 1.4; margin-bottom: 20px; text-align: left; color: var(--text-main); font-weight: 500;">
                     Préparer l’avenir sans fragiliser la solidité économique actuelle
                 </p>
                 <p style="margin-bottom: 0; color: var(--text-main); font-weight: 400;">
@@ -713,20 +738,20 @@
             </div><!-- /.card-stack -->
 
             <!-- BLOCS DE FIN CONTEXTE, POSTURE ET FORMATS FLEXIBLES ADAPTATIFS -->
-            <div class="reveal" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--bg-secondaire); max-width: 100%; font-size: var(--text-small); line-height: var(--lh-body); display: flex; flex-direction: column; gap: 12px;">
+            <div class="reveal" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--bg-secondaire); max-width: 100%; font-size: var(--text-base); line-height: var(--lh-body); display: flex; flex-direction: column; gap: 18px;">
                 
                 <div style="color: var(--text-main); text-align: left; font-weight: 400;">
-                    <span style="font-weight: 700; font-family: var(--font-title);">Contexte d'intervention :</span> 
+                    <span style="font-weight: 700; font-family: var(--font-title); font-size: var(--text-label); display: block; margin-bottom: 2px;">Contexte d'intervention :</span>
                     Création et/ou développement de nouvelles activités à fort impact <span style="color: var(--accent-color);">•</span> Transformation de modèles économiques fragilisés.
                 </div>
                 
                 <div style="color: var(--text-main); text-align: left; font-weight: 400;">
-                    <span style="font-weight: 700; font-family: var(--font-title);">Modalités d'intervention adaptés aux contraintes :</span> En tant que 
+                    <span style="font-weight: 700; font-family: var(--font-title); font-size: var(--text-label); display: block; margin-bottom: 2px;">Modalités d'intervention adaptés aux contraintes :</span>En tant que
                     Sparring partner <span style="color: var(--accent-color);">•</span> Doer <span style="color: var(--text-muted); font-style: italic;">(business development, animation d'ateliers)</span> <span style="color: var(--accent-color);">•</span> Mentor.
                 </div>
                 
                 <div style="color: var(--text-main); text-align: left; font-weight: 400;">
-                    <span style="font-weight: 700; font-family: var(--font-title);">Formats flexibles :</span> 
+                    <span style="font-weight: 700; font-family: var(--font-title); font-size: var(--text-label); display: block; margin-bottom: 2px;">Formats flexibles :</span>
                     Régie sous contrat freelance externalisé <span style="color: var(--accent-color);">•</span> Management de transition <span style="color: var(--text-muted); font-style: italic;">(Direction de BU, Direction commerciale)</span> <span style="color: var(--accent-color);">•</span> Mission ponctuelle <span style="color: var(--accent-color);">•</span> CDI, CDD.
                 </div>
 
@@ -737,7 +762,7 @@
 
            <!-- SECTION 3 – MES EXPÉRIENCES (100% ADAPTATIVE ORDINATEUR / MOBILE & PLEINE LARGEUR) -->
     <section id="projets" style="padding: var(--space-section) 0; background-color: var(--bg-principal); border-top: 1px solid var(--bg-secondaire);">
-        <div class="container" style="text-align: justify; text-justify: inter-word;">
+        <div class="container" style="text-align: left;">
             
             <!-- Titre de section principal fluide -->
             <div class="eyebrow reveal">Sur le terrain</div>
@@ -883,40 +908,62 @@
             <!-- ================= SOUS-SECTION MES VALEURS ================= -->
             <div style="max-width: 100%; border-top: 1px solid var(--bg-secondaire); padding-top: 24px;">
                 
-                <!-- Titre Mes valeurs : Panforte pro bold, noir, taille 16 -->
-                <h3 style="font-family: var(--font-title); font-weight: 700; font-size: var(--text-base); color: var(--text-main); margin-bottom: var(--space-para); text-align: left; letter-spacing: 0.5px;">
+                <!-- Titre Mes valeurs -->
+                <h3 style="font-size: var(--text-subtitle); color: var(--text-main); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.3px;">
                     Mes valeurs
                 </h3>
-                
-                <!-- Les 4 valeurs présentées en grille de cartes -->
-                <div class="values-grid reveal" style="margin-bottom: 28px; text-align: left; font-family: var(--font-body); font-size: var(--text-base); line-height: var(--lh-body); font-weight: 400; color: var(--text-main);">
+
+                <!-- Les 4 valeurs présentées en grille de cartes.
+                     Chaque verbe démarre une nouvelle ligne : c'est plus lisible
+                     qu'une longue phrase séparée par des virgules. -->
+                <div class="values-grid reveal" style="margin-bottom: 28px; text-align: left; font-family: var(--font-body); font-weight: 400; color: var(--text-main);">
 
                     <div class="value-card">
                         <span class="value-name">Aventure</span>
-                        Explorer de nouveaux horizons, utiliser l’audace dans l’inconnu, faire preuve de créativité forte pour faire face à de nouveaux défis complexes.
+                        <ul class="value-list">
+                            <li>Explorer de nouveaux horizons.</li>
+                            <li>Utiliser l’audace dans l’inconnu.</li>
+                            <li>Faire preuve de créativité forte pour faire face à de nouveaux défis complexes.</li>
+                        </ul>
                     </div>
 
                     <div class="value-card">
                         <span class="value-name">Altruisme</span>
-                        Agir pour l’impact collectif, s’ouvrir avec curiosité, faciliter les connexions de réseaux différents, partager avec le cœur, mutualiser les difficultés, se soutenir dans l’entraide.
+                        <ul class="value-list">
+                            <li>Agir pour l’impact collectif.</li>
+                            <li>S’ouvrir avec curiosité.</li>
+                            <li>Faciliter les connexions de réseaux différents.</li>
+                            <li>Partager avec le cœur.</li>
+                            <li>Mutualiser les difficultés.</li>
+                            <li>Se soutenir dans l’entraide.</li>
+                        </ul>
                     </div>
 
                     <div class="value-card">
                         <span class="value-name">Sagesse</span>
-                        Prendre du recul, s’adapter, écouter les signaux faibles, être sincère et simplement humaine.
+                        <ul class="value-list">
+                            <li>Prendre du recul.</li>
+                            <li>S’adapter.</li>
+                            <li>Écouter les signaux faibles.</li>
+                            <li>Être sincère et simplement humaine.</li>
+                        </ul>
                     </div>
 
                     <div class="value-card">
                         <span class="value-name">Enthousiasme</span>
-                        Embarquer avec énergie, optimisme et légèreté, agir proactivement, leader avec dynamisme.
+                        <ul class="value-list">
+                            <li>Embarquer avec énergie, optimisme et légèreté.</li>
+                            <li>Agir proactivement.</li>
+                            <li>Leader avec dynamisme.</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Ma boussole : mise en avant sur fond perle -->
-                <div class="reveal" style="background-color: var(--bg-secondaire); border-radius: 8px; padding: 22px 26px; margin-top: 24px; text-align: center;">
-                    <p style="margin-bottom: 0; font-size: var(--text-base); font-family: var(--font-body); font-weight: 400; color: var(--text-main);">
-                        <span style="font-family: var(--font-title); font-weight: 700; font-size: var(--text-base);">Ma boussole</span>
-                        <span style="font-family: var(--font-title); color: var(--accent-color); font-weight: 700; font-size: clamp(16px, 1.8vw, 20px); margin-left: 10px; letter-spacing: 0.5px;">« Explore, Dare, Impact, Care »</span>
+                <div class="reveal" style="background-color: var(--bg-secondaire); border-radius: 8px; padding: 26px; margin-top: 24px; text-align: center;">
+                    <p style="margin-bottom: 0; font-family: var(--font-body); font-weight: 400; color: var(--text-main); line-height: 1.5;">
+                        <span style="font-family: var(--font-title); font-weight: 700; font-size: var(--text-subtitle);">Ma boussole</span>
+                        <span style="font-family: var(--font-title); color: var(--accent-color); font-weight: 700; font-size: var(--text-subtitle); margin-left: 10px; letter-spacing: -0.3px;">« Explore, Dare, Impact, Care »</span>
                     </p>
                 </div>
 
@@ -936,12 +983,22 @@
             </p>
 
             <!-- Bouton d'action principal utilisant les 10% d'accentuation corail -->
-            <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center; margin-bottom: 26px;">
+            <div style="margin-bottom: 28px;">
                 <a href="mailto:hudrybettina@gmail.com" class="btn-primary">
                     Me contacter par e-mail
                 </a>
+            </div>
+
+            <!-- Les trois ressources, en retrait du bouton principal -->
+            <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: center; margin-bottom: 28px;">
                 <a href="bettina-hudry-gerez-cv.pdf" target="_blank" rel="noopener" class="btn-resource">
                     ↓&nbsp; Mon CV (PDF)
+                </a>
+                <a href="bettina-hudry-gerez-portfolio.pdf" target="_blank" rel="noopener" class="btn-resource">
+                    ↓&nbsp; Mon portfolio (PDF)
+                </a>
+                <a href="https://www.linkedin.com/in/bettinahudrygerez-sustainability-systemicchange-innovation/" target="_blank" rel="noopener" class="btn-resource">
+                    Mon profil LinkedIn&nbsp;→
                 </a>
             </div>
 
