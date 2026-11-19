@@ -228,6 +228,7 @@
 
         .brand { display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--text-main); min-width: 0; }
         .brand-name { font-family: var(--font-body); font-weight: 400; font-size: var(--text-label); letter-spacing: 0; line-height: 1.2; color: var(--text-main); text-decoration: none; transition: color 0.2s; }
+        .brand-name:hover { color: var(--accent-color); }
         .brand-tagline {
             font-size: var(--text-tag); font-weight: 500; line-height: 1.4;
             max-height: 40px; overflow: hidden;
@@ -337,8 +338,6 @@
             object-fit: cover; border-radius: 50%;
             border: 2px solid var(--accent-color); padding: 3px; background: var(--bg-principal);
         }
-        .hero-photo-link { flex-shrink: 0; display: block; border-radius: 50%; transition: transform 0.2s ease; }
-        .hero-photo-link:hover { transform: scale(1.05); }
         .hero-line {
             font-size: var(--text-lead); font-weight: 500; line-height: 1.45;
             color: var(--text-muted); text-wrap: balance;
@@ -607,7 +606,7 @@
     <header class="site-header" id="navbar">
         <div class="container header-inner">
             <div class="brand">
-                <span class="brand-name">Bettina Hudry-Gerez</span>
+                <a class="brand-name" href="https://www.linkedin.com/in/bettinahudrygerez-sustainability-systemicchange-innovation/" target="_blank" rel="noopener" title="Voir mon profil LinkedIn">Bettina Hudry-Gerez</a>
                 <span class="brand-tagline">« Transformer les enjeux de durabilité en activités viables et créatrices de valeur. »</span>
             </div>
 
@@ -635,7 +634,7 @@
                 <div class="eyebrow">Stratégie · Durabilité · Innovation</div>
                 <h1>Transformation de modèles économiques &amp; Durabilité stratégique</h1>
                 <div class="hero-row">
-                    <a class="hero-photo-link" href="https://www.linkedin.com/in/bettinahudrygerez-sustainability-systemicchange-innovation/" target="_blank" rel="noopener" title="Voir mon profil LinkedIn"><img class="hero-photo" src="photo-bettina.jpg" alt="Portrait de Bettina Hudry-Gerez – voir mon profil LinkedIn" width="450" height="450" fetchpriority="high"></a>
+                    <img class="hero-photo" src="photo-bettina.jpg" alt="Portrait de Bettina Hudry-Gerez" width="450" height="450" fetchpriority="high">
                     <p class="hero-line">
                         Poser un <span class="highlight-corail">regard différent</span> pour <span class="highlight-corail">pérenniser</span> les organisations.
                     </p>
