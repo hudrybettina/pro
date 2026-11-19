@@ -5,32 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bettina Hudry-Gerez · Durabilité &amp; Stratégie Systémique</title>
 
-    <!-- Description affichée dans Google et lors du partage du lien -->
+    <!-- Référencement & partage -->
     <meta name="description" content="Bettina Hudry-Gerez. Transformation de modèles économiques et durabilité stratégique. J'aide les entreprises à faire des enjeux RSE un levier de création de valeur.">
-
-    <!-- Aperçu enrichi lors d'un partage sur LinkedIn / WhatsApp / Slack -->
+    <link rel="canonical" href="https://hudrybettina.github.io/pro/">
+    <meta name="theme-color" content="#faf6f0">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
     <meta property="og:title" content="Bettina Hudry-Gerez · Durabilité &amp; Stratégie Systémique">
     <meta property="og:description" content="Transformer les enjeux de durabilité en activités viables et créatrices de valeur.">
     <meta property="og:image" content="https://hudrybettina.github.io/pro/photo-bettina.jpg">
     <meta property="og:url" content="https://hudrybettina.github.io/pro/">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Chargement officiel des polices du Design System -->
+    <!-- Fiche « Personne » lisible par Google (aide le référencement de votre nom) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bettina Hudry-Gerez",
+        "jobTitle": "Transformation de modèles économiques & Durabilité stratégique",
+        "url": "https://hudrybettina.github.io/pro/",
+        "image": "https://hudrybettina.github.io/pro/photo-bettina.jpg",
+        "sameAs": ["https://www.linkedin.com/in/bettinahudrygerez-sustainability-systemicchange-innovation/"],
+        "knowsAbout": ["Stratégie systémique", "Durabilité", "Innovation", "Modèles économiques", "Économie régénérative", "Développement commercial"]
+    }
+    </script>
+
+    <!-- Polices du Design System (inchangées) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!-- Active le masquage initial des blocs animés UNIQUEMENT si le JavaScript
-         fonctionne. Sans cette classe, tout le contenu reste visible. -->
+    <!-- « js » : le JavaScript fonctionne (menu mobile repliable).
+         « js-reveal » : animations d'apparition, sauf si l'utilisateur les a désactivées.
+         Sans JavaScript, tout reste visible et le menu reste déplié. -->
     <script>
+        document.documentElement.className += " js";
         if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
             document.documentElement.className += " js-reveal";
         }
     </script>
 
     <style>
-        /* DESIGN SYSTEM STRICT & REFINÉ */
+        /* ============================================================= */
+        /*  DESIGN SYSTEM (couleurs & polices inchangées)                */
+        /* ============================================================= */
         :root {
             --bg-principal: #faf6f0;    /* Blanc cassé chaud / Crème (60%) */
             --bg-secondaire: #e8e4de;   /* Gris perle chaud (30%) */
@@ -38,900 +57,884 @@
             --surface: #fffcf8;         /* Blanc chaud : fond des cartes */
             --text-main: #1c1e21;       /* Presque noir */
             --text-muted: #6e747c;      /* Gris moyen */
-            /* Panforte pro déclarée en premier, Space Grotesk sert de secours web si non installée en local */
             --font-title: 'Panforte pro', 'Space Grotesk', sans-serif;
             --font-body: 'Josefin Sans', sans-serif;
 
-            /* ========================================================= */
-            /*  ⚙️  PANNEAU DE RÉGLAGES : TOUT SE CHANGE ICI              */
-            /*  Modifie une valeur ci-dessous : toute la page suit.      */
-            /* ========================================================= */
+            /* ============================================================ */
+            /*  ⚙️ ÉCHELLE DES TAILLES DE TEXTE : 7 niveaux pour tout le site */
+            /*  Modifiez une valeur : tous les textes de ce niveau suivent.   */
+            /*  (2 valeurs = taille sur téléphone → taille sur grand écran)   */
+            /* ============================================================ */
 
-            --text-base: 17px;    /* Taille du texte courant (paragraphes, puces) */
-            --text-small: 15px;   /* Taille des précisions en italique entre parenthèses */
-            --lh-body: 1.75;      /* Interligne : espace ENTRE les lignes d'un paragraphe */
+            /* 1. TITRE D'ACCUEIL (34 → 58 px)
+                  « Transformation de modèles économiques & Durabilité stratégique » */
+            --text-h1: clamp(34px, 4.4vw, 58px);
 
-            /* Phrase d'accroche « Préparer l'avenir sans fragiliser… ».
-               Taille intermédiaire entre le texte courant et les titres. */
-            --text-lead: clamp(19px, 1.9vw, 23px);
+            /* 2. TITRES DE SECTION (28 → 46 px)
+                  « Repenser son modèle… », « Préparer l'avenir… », « Mes Expériences »,
+                  « Mon parcours », « Mes valeurs », « Engager la réflexion », chiffres clés */
+            --text-h2: clamp(28px, 3.5vw, 46px);
 
-            /* Sous-titres : « Mes valeurs », « Ma boussole » */
-            --text-subtitle: clamp(21px, 2.2vw, 27px);
+            /* 3. ACCROCHES (18 → 20 px)
+                  « Poser un regard différent… », « Ma boussole… », « Mon fil rouge… » */
+            --text-lead: clamp(18px, 1.6vw, 20px);
 
-            /* Intitulés en gras : « Contexte d'intervention : », etc. */
-            --text-label: clamp(17px, 1.7vw, 19px);
+            /* 4. INTERTITRES (17 → 19 px), en gras
+                  Titres corail des cartes et encadrés, noms des entreprises, étapes du
+                  parcours, noms des valeurs, « Contexte d'intervention », ton nom */
+            --text-label: clamp(17px, 1.5vw, 19px);
 
-            /* Noms des valeurs : Aventure, Altruisme, Sagesse, Enthousiasme */
-            --text-value-name: clamp(17px, 1.7vw, 20px);
+            /* 5. TEXTE COURANT (17 px)
+                  Paragraphes, puces de l'offre, menu, boutons principaux */
+            --text-base: 17px;
 
-            --space-section: clamp(52px, 4.5vw, 80px); /* Espace vertical entre deux sections */
-            --space-block: 32px;  /* Espace entre deux blocs à l'intérieur d'une section */
-            --space-para: 18px;   /* Espace entre deux paragraphes */
+            /* 6. PETITS TEXTES (15 px)
+                  Descriptions des projets, du parcours, des encadrés de la vision,
+                  lignes des valeurs, pastilles, boutons CV / LinkedIn, précisions en italique */
+            --text-small: 15px;
+
+            /* 7. ÉTIQUETTES (13 px), en capitales ou discrètes
+                  « MA VISION », « CE QUE J'APPORTE », « ASIE », « TRANSFORMER L'EXISTANT »,
+                  baseline sous ton nom, pied de page */
+            --text-tag: 13px;
+
+            --lh-body: 1.75;
+
+            --space-section: clamp(36px, 4vw, 60px);
+            --space-block: 32px;
+            --space-para: 18px;
+
+            --measure: 95ch;       /* Largeur max des paragraphes (~95 caractères : large mais confortable à lire) */
+            --radius: 10px;
+            --header-h: 76px;      /* Hauteur du menu (ajustée par le script) */
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 180px; /* Aligne le haut des sections sous le grand menu fixe */
+            scroll-padding-top: calc(var(--header-h) + 16px);
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
             font-family: var(--font-body);
-            font-weight: 400;
             font-size: var(--text-base);
             line-height: var(--lh-body);
             color: var(--text-main);
             background-color: var(--bg-principal);
             overflow-x: hidden;
-            padding-top: 140px; /* Espace de sécurité sous le menu fixe */
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
+        img { display: block; max-width: 100%; height: auto; }
+        ul { list-style: none; }
 
-        /* BARRE DE NAVIGATION FIXE (STICKY BANNER) */
-        .navbar-fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--bg-principal);
-            border-bottom: 1px solid var(--bg-secondaire);
-            z-index: 1000;
-            padding: 24px 0;
-        }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+        .prose { max-width: var(--measure); }
+        .prose > p + p { margin-top: var(--space-para); }
+        /* Évite qu'un mot se retrouve seul sur la dernière ligne d'un paragraphe */
+        p, li { text-wrap: pretty; }
 
-        .navbar-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 40px;
+        /* Lien d'évitement pour la navigation au clavier */
+        .skip-link {
+            position: absolute; left: 16px; top: -60px; z-index: 2000;
+            background: var(--text-main); color: #fff; padding: 10px 16px; border-radius: 4px;
+            text-decoration: none; font-weight: 700;
         }
+        .skip-link:focus { top: 12px; }
 
-        .brand-block {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            max-width: 650px;
-        }
+        /* ============================================================= */
+        /*  TYPOGRAPHIE                                                  */
+        /* ============================================================= */
+        h1, h2, h3 { font-family: var(--font-title); font-weight: 700; color: var(--text-main); text-wrap: balance; }
 
-        /* Nom forcé en Panforte pro (var(--font-title)) */
-        .brand-name {
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: 24px;
-            letter-spacing: -0.5px;
-            color: var(--text-main);
-            text-decoration: none;
-            line-height: 1.2;
-        }
-
-        /* Boussole forcée en Josefin Sans et Presque Noir */
-        .brand-tagline {
-            font-family: var(--font-body);
-            font-size: 13px;
-            color: var(--text-main);
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        /* Onglets permanents en Josefin Sans */
-        nav {
-            display: flex;
-            align-items: center;
-        }
-
-        nav a {
-            font-family: var(--font-body);
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: var(--text-base);
-            margin-left: 32px;
-            transition: color 0.2s;
-            white-space: nowrap;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        /* SECTION ACCUEIL MINIMALISTE ÉNERGIQUE */
-        .hero-section {
-            /* Marges resserrées : elles s'adaptent à la taille de l'écran
-               au lieu d'être figées à 160px, qui laissaient un grand vide. */
-            padding: clamp(36px, 5vw, 80px) 0 clamp(32px, 4vw, 64px) 0;
-        }
-
-        /* Titre principal fluide en Panforte pro.
-           Le titre se répartit sur 2 lignes équilibrées : il est trop long pour
-           tenir sur une seule ligne sans être coupé sur les écrans larges. */
         h1 {
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: clamp(32px, 3.8vw, 52px); /* Taille dynamique auto-adaptative */
-            line-height: 1.2;
-            letter-spacing: -1px;
-            color: var(--text-main);
-            margin-bottom: 28px;
-            text-wrap: balance; /* Répartit harmonieusement les mots sur les lignes */
-            max-width: 20ch;    /* Force un retour à la ligne élégant */
+            font-size: var(--text-h1);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
         }
 
-        /* Titres de section : style unique appliqué partout automatiquement */
         h2 {
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: clamp(28px, 3.5vw, 46px);
+            font-size: var(--text-h2);
             line-height: 1.15;
             letter-spacing: -1px;
-            color: var(--text-main);
-            text-wrap: balance;
+            margin-bottom: 24px;
         }
 
-        h3 {
-            font-family: var(--font-title);
-            font-weight: 700;
-            line-height: 1.3; /* Plus serré que le corps de texte : c'est un titre */
-        }
+        h3 { line-height: 1.3; letter-spacing: -0.4px; }
 
-        /* Ligne d'accroche fluide en Josefin Sans */
-        .hero-single-line {
-            font-family: var(--font-body);
-            font-size: clamp(18px, 1.8vw, 24px); /* Taille dynamique auto-adaptative */
-            color: var(--text-muted);
+        .lead {
+            font-size: var(--text-lead);
+            line-height: 1.45;
             font-weight: 500;
-            margin-bottom: 0;
-            text-wrap: balance;
+            margin-bottom: 20px;
         }
 
-        /* ===== BOUTONS DE TÉLÉCHARGEMENT (CV / PORTFOLIO) ===== */
-        .resource-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 24px;
-            align-items: center;
+        .highlight-corail { color: var(--accent-color); font-weight: 700; }
+
+        /* Précisions entre parenthèses : gris, italique, plus petit */
+        .aside { color: var(--text-muted); font-style: italic; font-size: var(--text-small); }
+        /* Dans un petit texte, la précision garde la même taille */
+        .chip .aside, .pillar .aside { font-size: inherit; }
+        /* Précisions des projets et du parcours (« (DGA impact) »…) : plus discrètes */
+        .exp-list .aside, .step .aside { font-size: var(--text-tag); }
+
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-family: var(--font-title); font-weight: 700; font-size: var(--text-tag);
+            letter-spacing: 1.8px; text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 18px;
         }
+        .eyebrow::before { content: ""; width: 34px; height: 2px; background-color: var(--accent-color); }
+
+        /* Liste à puces corail (remplace les puces écrites à la main) */
+        .bullets li { position: relative; padding-left: 22px; }
+        .bullets li + li { margin-top: 12px; }
+        .bullets li::before {
+            content: ""; position: absolute; left: 2px; top: 0.72em;
+            width: 7px; height: 7px; border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        /* ============================================================= */
+        /*  EN-TÊTE (collant, sans calcul de marge fragile)              */
+        /* ============================================================= */
+        .reading-progress {
+            position: fixed; top: 0; left: 0; z-index: 1100;
+            width: 100%; height: 3px;
+            background-color: var(--accent-color);
+            transform: scaleX(0); transform-origin: left center;
+        }
+
+        .site-header {
+            position: sticky; top: 0; z-index: 1000;
+            background-color: rgba(250, 246, 240, 0.92);
+            -webkit-backdrop-filter: saturate(140%) blur(10px);
+            backdrop-filter: saturate(140%) blur(10px);
+            border-bottom: 1px solid var(--bg-secondaire);
+            transition: box-shadow 0.3s ease;
+        }
+        .site-header.is-compact { box-shadow: 0 2px 24px rgba(28, 30, 33, 0.07); }
+
+        .header-inner {
+            display: flex; justify-content: space-between; align-items: center; gap: 32px;
+            padding-top: 18px; padding-bottom: 18px;
+            transition: padding 0.3s ease;
+        }
+        .is-compact .header-inner { padding-top: 12px; padding-bottom: 12px; }
+
+        .brand { display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--text-main); min-width: 0; }
+        .brand-name { font-family: var(--font-body); font-weight: 400; font-size: var(--text-label); letter-spacing: 0; line-height: 1.2; color: var(--text-main); text-decoration: none; transition: color 0.2s; }
+        .brand-tagline {
+            font-size: var(--text-tag); font-weight: 500; line-height: 1.4;
+            max-height: 40px; overflow: hidden;
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .site-nav ul { display: flex; align-items: center; gap: 28px; }
+        .site-nav a {
+            position: relative; display: inline-block; padding: 4px 0;
+            color: var(--text-main); text-decoration: none; font-weight: 500; white-space: nowrap;
+            transition: color 0.2s;
+        }
+        .site-nav a::after {
+            content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
+            background-color: var(--accent-color);
+            transform: scaleX(0); transform-origin: left center; transition: transform 0.25s ease;
+        }
+        .site-nav a:hover { color: var(--accent-color); }
+        .site-nav a:hover::after, .site-nav a.is-active::after { transform: scaleX(1); }
+        .site-nav a.is-active { font-weight: 700; }
+
+
+        .nav-toggle {
+            display: none;
+            width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer;
+            position: relative; flex-shrink: 0;
+        }
+        .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+            position: absolute; left: 11px; width: 22px; height: 2px; background: var(--text-main);
+            transition: transform 0.25s ease, opacity 0.2s ease; content: "";
+        }
+        .nav-toggle span { top: 21px; }
+        .nav-toggle span::before { left: 0; top: -7px; }
+        .nav-toggle span::after { left: 0; top: 7px; }
+        .nav-toggle[aria-expanded="true"] span { background: transparent; }
+        .nav-toggle[aria-expanded="true"] span::before { transform: translateY(7px) rotate(45deg); }
+        .nav-toggle[aria-expanded="true"] span::after { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ============================================================= */
+        /*  BOUTONS                                                      */
+        /* ============================================================= */
+        .btn-primary, .btn-resource {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-decoration: none;
+            border-radius: 4px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s, color 0.2s;
+        }
+        .btn-primary {
+            background-color: var(--accent-color); color: #fff;
+            font-size: var(--text-base); padding: 16px 32px;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 4px 14px rgba(255, 87, 87, 0.22);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(255, 87, 87, 0.32); }
+        .btn-primary.is-large { padding: 20px 44px; }
 
         .btn-resource {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: var(--text-small);
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 13px 22px;
+            color: var(--text-main); background-color: transparent;
+            font-size: var(--text-small); padding: 13px 22px;
             border: 2px solid var(--accent-color);
-            border-radius: 4px;
-            background-color: transparent;
-            transition: background-color 0.2s, color 0.2s, transform 0.2s;
         }
+        .btn-resource:hover { background-color: var(--accent-color); color: #fff; transform: translateY(-2px); }
 
-        .btn-resource:hover {
-            background-color: var(--accent-color);
-            color: #ffffff;
-            transform: translateY(-2px);
-        }
-
-        /* Bouton d'action principal (corail plein) */
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #ffffff;
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: 18px;
-            text-decoration: none;
-            padding: 20px 44px;
-            border-radius: 4px;
-            box-shadow: 0 4px 14px rgba(255, 87, 87, 0.22);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(255, 87, 87, 0.32);
-        }
-
-        /* Le lien LinkedIn reste discret, en texte souligné */
         .link-inline {
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: var(--text-small);
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: var(--text-small);
             color: var(--text-main);
-            text-decoration: underline;
-            text-decoration-color: var(--accent-color);
-            text-decoration-thickness: 2px;
-            text-underline-offset: 4px;
+            text-decoration: underline; text-decoration-color: var(--accent-color);
+            text-decoration-thickness: 2px; text-underline-offset: 4px;
             transition: opacity 0.2s;
         }
-
         .link-inline:hover { opacity: 0.65; }
 
-        /* Mots accentués en rouge corail vif ET en gras */
-        .highlight-corail {
-            color: var(--accent-color);
-            font-weight: 700;
+        .btn-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--accent-color); outline-offset: 3px; border-radius: 3px;
         }
 
         /* ============================================================= */
-        /*  COMPOSANTS DE MISE EN FORME                                  */
+        /*  SECTIONS                                                     */
         /* ============================================================= */
+        .section { padding: var(--space-section) 0; }
+        .section + .section { border-top: 1px solid var(--bg-secondaire); }
+        .section-intro { margin-bottom: 24px; }
 
-        /* --- Barre de progression de lecture (fine ligne corail en haut) --- */
-        .reading-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            width: 0%;
-            background-color: var(--accent-color);
-            z-index: 1100;
-            transition: width 0.12s linear;
+        /* --- À partir de « Ma vision » : Space Grotesk à la place de Josefin Sans
+               (plus lisible sur les longs textes). L'en-tête, l'accueil et
+               les chiffres clés restent en Josefin Sans. --- */
+        #vision, #offre, #projets, #qui-suis-je, #contact, .site-footer {
+            --font-body: 'Space Grotesk', sans-serif;
+            font-family: var(--font-body);
+            --lh-body: 1.65;
+            line-height: var(--lh-body);
         }
 
-        /* --- Barre de navigation qui se compacte au défilement --- */
-        .navbar-fixed {
-            transition: padding 0.3s ease, box-shadow 0.3s ease;
+        /* Titres corail (cartes Offre / Expériences et ajustements de la Vision) :
+           toujours en Space Grotesk, même si Panforte pro est installée */
+        .card-title, .pillar-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+
+        /* --- Accueil --- */
+        .hero { padding: clamp(28px, 3.5vw, 56px) 0 clamp(32px, 4vw, 56px); }
+        .hero h1 { margin-bottom: 20px; }
+        /* Photo ronde, petite, sur la même ligne que la phrase d'accroche */
+        .hero-row { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; }
+        .hero-photo {
+            flex-shrink: 0; width: clamp(64px, 7vw, 92px); height: auto; aspect-ratio: 1;
+            object-fit: cover; border-radius: 50%;
+            border: 2px solid var(--accent-color); padding: 3px; background: var(--bg-principal);
+        }
+        .hero-photo-link { flex-shrink: 0; display: block; border-radius: 50%; transition: transform 0.2s ease; }
+        .hero-photo-link:hover { transform: scale(1.05); }
+        .hero-line {
+            font-size: var(--text-lead); font-weight: 500; line-height: 1.45;
+            color: var(--text-muted); text-wrap: balance;
         }
 
-        .navbar-fixed.is-compact {
-            padding: 14px 0;
-            box-shadow: 0 2px 24px rgba(28, 30, 33, 0.07);
-        }
-
-        .brand-tagline {
-            transition: opacity 0.3s ease, max-height 0.3s ease;
-            max-height: 60px;
-            overflow: hidden;
-        }
-
-        /* La baseline s'efface quand la barre se compacte, pour gagner de la place */
-        .navbar-fixed.is-compact .brand-tagline {
-            opacity: 0;
-            max-height: 0;
-        }
-
-        /* --- Onglet actif : soulignement corail qui suit le défilement --- */
-        nav a {
-            position: relative;
-            padding-bottom: 5px;
-        }
-
-        nav a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--accent-color);
-            transform: scaleX(0);
-            transform-origin: left center;
-            transition: transform 0.25s ease;
-        }
-
-        nav a:hover::after,
-        nav a.is-active::after {
-            transform: scaleX(1);
-        }
-
-        nav a.is-active {
-            font-weight: 700;
-        }
-
-        /* --- Apparition en fondu des sections au défilement ---
-           SÉCURITÉ : le masquage n'est appliqué que si le JavaScript a pu
-           poser la classe .js-reveal sur <html>. Sans JavaScript, ou si le
-           script échoue, tout le contenu reste visible normalement. */
-        .js-reveal .reveal {
-            opacity: 0;
-            transform: translateY(26px);
-            transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
-                        transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
-        }
-
-        .js-reveal .reveal.is-visible {
-            opacity: 1;
-            transform: none;
-        }
-
-        /* --- Étiquette de section (petit trait + texte corail en capitales) --- */
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: 13px;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
-            color: var(--accent-color);
-            margin-bottom: 22px;
-        }
-
-        .eyebrow::before {
-            content: "";
-            width: 34px;
-            height: 2px;
-            background-color: var(--accent-color);
-        }
-
-        /* --- Bandeau de chiffres clés --- */
-        .stats-band {
-            background-color: var(--bg-secondaire);
-            padding: var(--space-section) 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: clamp(24px, 3vw, 40px);
-        }
-
-        .stat {
-            border-left: 2px solid var(--accent-color);
-            padding-left: 20px;
-        }
-
+        /* --- Chiffres clés --- */
+        .stats-band { background-color: var(--bg-secondaire); padding: clamp(28px, 3vw, 44px) 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(24px, 3vw, 40px); }
+        .stat { border-left: 2px solid var(--accent-color); padding-left: 20px; }
         .stat-value {
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: clamp(30px, 3.2vw, 42px);
-            line-height: 1.05;
-            letter-spacing: -1.5px;
+            font-family: var(--font-title); font-weight: 700;
+            font-size: var(--text-h2); line-height: 1.05; letter-spacing: -1.5px;
+        }
+        .stat-label { font-size: var(--text-small); color: var(--text-muted); line-height: 1.45; margin-top: 8px; }
+
+        /* --- Vision : conviction en tête, 4 ajustements en ligne --- */
+        .vision-intro { margin-bottom: 24px; }
+        /* Paragraphe de la Vision : un peu plus large pour tenir en 2 lignes sur ordinateur */
+        .vision-intro { max-width: 112ch; }
+        .pillars { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .pillar {
+            position: relative;
+            background-color: var(--surface); border: 1px solid var(--bg-secondaire);
+            border-top: 3px solid var(--accent-color); border-radius: 8px;
+            padding: 24px; line-height: 1.6;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .pillar:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(28, 30, 33, 0.07); }
+        .pillar-title {
+            display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: var(--text-label); color: var(--accent-color); margin-bottom: 10px; line-height: 1.3;
+            text-wrap: balance;
+        }
+        .pillar p { font-size: var(--text-small); line-height: 1.55; }
+
+        /* --- Cartes --- */
+        .card {
+            position: relative; overflow: hidden;
+            background-color: var(--surface); border: 1px solid var(--bg-secondaire); border-radius: var(--radius);
+            padding: clamp(24px, 3vw, 40px);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .card:hover { transform: translateY(-4px); border-color: rgba(255, 87, 87, 0.35); box-shadow: 0 16px 44px rgba(28, 30, 33, 0.08); }
+        .card-num {
+            position: absolute; top: 10px; right: 24px;
+            font-family: var(--font-title); font-weight: 700; font-size: 72px; line-height: 1;
+            color: var(--accent-color); opacity: 0.10; pointer-events: none; user-select: none; z-index: 0;
+        }
+        .card > :not(.card-num) { position: relative; z-index: 1; }
+        .card-title {
+            font-size: var(--text-label); color: var(--accent-color);
+            margin-bottom: var(--space-para); padding-right: 0; text-wrap: wrap;
+        }
+        .card-kicker {
+            display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--text-tag);
+            letter-spacing: 1.6px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;
+        }
+        /* Mots-clés en gras dans les puces */
+        .bullets strong { font-weight: 700; }
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .card-stack { display: flex; flex-direction: column; gap: 24px; }
+
+        /* --- Offre : conditions d'intervention en 3 colonnes de pastilles --- */
+        .terms {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+            margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--bg-secondaire);
+        }
+        .term-label {
+            display: block; font-family: var(--font-title); font-weight: 700;
+            font-size: var(--text-label); line-height: 1.35; margin-bottom: 12px;
+        }
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .chip {
+            display: inline-block; padding: 6px 12px; border-radius: 999px;
+            background-color: var(--surface); border: 1px solid var(--bg-secondaire);
+            font-size: var(--text-small); line-height: 1.4;
+        }
+
+        /* --- Expériences : nom du client mis en avant --- */
+        /* Expériences listées de haut en bas : logo à gauche, texte à droite */
+        .exp-list > li {
+            display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; align-items: start;
+            padding: 16px 0; border-top: 1px solid var(--bg-secondaire);
+        }
+        .exp-list > li:first-child { border-top: 0; padding-top: 0; }
+        .exp-list > li:last-child { padding-bottom: 0; }
+        .exp-list p { font-size: var(--text-small); line-height: 1.55; }
+        .exp-org {
+            display: block; font-family: var(--font-title); font-weight: 700;
+            font-size: var(--text-label); line-height: 1.35; margin-bottom: 4px;
+        }
+        .exp-org .aside { font-family: var(--font-body); font-weight: 400; }
+
+        /* Logos : déposez les fichiers dans le dossier « logos/ ».
+           Si un logo manque, ses initiales s'affichent à la place. */
+        .exp-logo {
+            position: relative; width: 48px; height: 48px; border-radius: 8px; flex-shrink: 0;
+            background: #fff; border: 1px solid var(--bg-secondaire);
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .exp-logo::before {
+            content: attr(data-initials);
+            font-family: var(--font-title); font-weight: 700; font-size: var(--text-tag); letter-spacing: 0.5px;
+            color: var(--accent-color);
+        }
+        .exp-logo img { position: absolute; inset: 6px; width: calc(100% - 12px); height: calc(100% - 12px); object-fit: contain; background: #fff; }
+
+        /* --- Qui suis-je : parcours en ligne directrice --- */
+        .about-intro { font-size: var(--text-base); font-weight: 400; max-width: var(--measure); margin-bottom: 28px; }
+
+        .timeline {
+            list-style: none; position: relative;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;
+            padding-top: 34px;
+        }
+        /* La ligne : grise, se termine par une flèche corail vers « Aujourd'hui » */
+        .timeline::before {
+            content: ""; position: absolute; top: 8px; left: 0; right: 12px; height: 2px;
+            background: linear-gradient(to right, var(--bg-secondaire), var(--accent-color));
+        }
+        .timeline::after {
+            content: ""; position: absolute; top: 3px; right: 0;
+            border-left: 12px solid var(--accent-color);
+            border-top: 6px solid transparent; border-bottom: 6px solid transparent;
+        }
+        /* Accolade « 13 ans chez Alcimed » au-dessus des 2 premières étapes */
+        .timeline-span {
+            width: calc(50% - 14px); margin-bottom: 14px;
+            text-align: center; position: relative; padding-bottom: 12px;
+        }
+        .timeline-span::after {
+            content: ""; position: absolute; left: 9px; right: 0; bottom: 0; height: 10px;
+            border: 2px solid var(--accent-color); border-bottom: 0; border-radius: 6px 6px 0 0;
+        }
+        .timeline-span span {
+            font-family: var(--font-title); font-weight: 700; font-size: var(--text-label);
             color: var(--text-main);
         }
 
-        .stat-label {
-            font-size: var(--text-small);
-            color: var(--text-muted);
-            line-height: 1.45;
-            margin-top: 8px;
+        .step { position: relative; }
+        .step::before {
+            /* Point sur la ligne */
+            content: ""; position: absolute; top: -34px; left: 0;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: var(--bg-principal); border: 3px solid var(--accent-color);
         }
-
-        /* --- Cartes (leviers d'offre et blocs d'expériences) --- */
-        .card {
-            background-color: var(--surface);
-            border: 1px solid var(--bg-secondaire);
-            border-radius: 10px;
-            padding: clamp(24px, 3vw, 40px);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        .step.is-now::before { background: var(--accent-color); box-shadow: 0 0 0 6px rgba(255, 87, 87, 0.18); }
+        .step-when {
+            display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--text-tag);
+            letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent-color); margin-bottom: 6px;
         }
+        .step-title { font-size: var(--text-label); margin-bottom: 8px; }
+        .step p { font-size: var(--text-small); line-height: 1.55; }
 
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 87, 87, 0.35);
-            box-shadow: 0 16px 44px rgba(28, 30, 33, 0.08);
-        }
+        .red-thread { margin-top: 28px; }
+        .about-links { margin-top: 24px; margin-bottom: 36px; }
 
-        /* Grand numéro filigrane dans le coin de la carte */
-        .card-num {
-            position: absolute;
-            top: 10px;
-            right: 24px;
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: 72px;
-            line-height: 1;
-            color: var(--accent-color);
-            opacity: 0.13;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .card-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        /* --- Grille des valeurs --- */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
-            gap: 20px;
-        }
-
+        .values-title { font-size: var(--text-h2); line-height: 1.15; letter-spacing: -1px; margin-bottom: 24px; }
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr)); gap: 20px; }
         .value-card {
-            background-color: var(--surface);
-            border: 1px solid var(--bg-secondaire);
-            border-top: 3px solid var(--accent-color);
-            border-radius: 8px;
-            padding: 24px;
+            background-color: var(--surface); border: 1px solid var(--bg-secondaire);
+            border-top: 3px solid var(--accent-color); border-radius: 8px; padding: 24px;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-
-        .value-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 36px rgba(28, 30, 33, 0.07);
-        }
-
+        .value-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(28, 30, 33, 0.07); }
         .value-name {
-            font-family: var(--font-title);
-            font-weight: 700;
-            color: var(--accent-color);
-            font-size: var(--text-value-name);
-            letter-spacing: 0;
-            display: block;
-            margin-bottom: 12px;
+            display: block; font-family: var(--font-title); font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.6px;
+            color: var(--accent-color); font-size: var(--text-label); margin-bottom: 12px;
         }
+        .value-list { font-size: var(--text-small); line-height: 1.5; }
+        .value-list li + li { margin-top: 9px; }
 
-        /* Une ligne par verbe, sans puce : plus lisible qu'une longue phrase */
-        .value-list {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-            font-size: var(--text-base);
-            line-height: 1.45;
+        .compass {
+            margin-top: 24px; padding: 26px; border-radius: 8px; text-align: center;
+            background-color: var(--bg-secondaire);
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: var(--text-lead);
+            line-height: 1.45; letter-spacing: -0.2px;
         }
+        .compass q { color: var(--accent-color); margin-left: 10px; quotes: "« " " »"; }
 
-        .value-list li + li {
-            margin-top: 9px;
+        /* --- Contact --- */
+        .contact { background-color: var(--bg-secondaire); padding: clamp(44px, 5vw, 72px) 0; text-align: center; }
+        .contact .eyebrow { justify-content: center; }
+        .contact-text { font-size: var(--text-base); margin: 0 auto 28px; max-width: 760px; text-wrap: balance; }
+        .contact h2 { margin-bottom: 14px; }
+        .contact .eyebrow { margin-bottom: 12px; }
+        .contact .btn-row { justify-content: center; margin-top: 28px; }
+
+        .site-footer { padding: 48px 0; font-size: var(--text-tag); color: var(--text-muted); text-align: center; }
+
+        /* ============================================================= */
+        /*  ANIMATIONS                                                   */
+        /* ============================================================= */
+        .js-reveal .reveal {
+            opacity: 0; transform: translateY(26px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
         }
+        .js-reveal .reveal.is-visible { opacity: 1; transform: none; }
 
-        /* --- Accessibilité : contour visible au clavier --- */
-        a:focus-visible,
-        button:focus-visible {
-            outline: 3px solid var(--accent-color);
-            outline-offset: 3px;
-            border-radius: 3px;
-        }
-
-        /* --- Respect du réglage système « réduire les animations » --- */
         @media (prefers-reduced-motion: reduce) {
-            .js-reveal .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-            .card:hover, .value-card:hover { transform: none; }
             html { scroll-behavior: auto; }
+            *, *::before, *::after { transition: none !important; }
+            .card:hover, .value-card:hover, .pillar:hover, .btn-primary:hover, .btn-resource:hover { transform: none; }
         }
 
-        /* ================= AJUSTEMENTS ADAPTATIFS MOBILE & TABLETTE ================= */
-        @media (max-width: 900px) {
-            .navbar-content { flex-direction: column; gap: 20px; text-align: center; }
-            /* Le bloc nom + baseline ne doit plus dépasser de l'écran */
-            .brand-block { align-items: center; max-width: 100%; }
-            /* Les onglets passent à la ligne au lieu de sortir de l'écran */
-            nav { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
-            nav a { margin: 0 12px; }
-            /* Valeur de secours si le JavaScript ne s'exécute pas : volontairement
-               généreuse, car le menu passe sur trois lignes en écran étroit.
-               Le script ajuste ensuite cette valeur au pixel près. */
-            body { padding-top: 230px; }
-            html { scroll-padding-top: 250px; }
+        /* ============================================================= */
+        /*  TABLETTE & MOBILE                                            */
+        /* ============================================================= */
+        @media (max-width: 1080px) {
+            .site-nav ul { gap: 20px; }
+            .brand-tagline { display: none; }
         }
 
-        @media (max-width: 480px) {
-            nav a { font-size: 14px; margin: 0 8px; }
+        @media (max-width: 960px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .card-grid, .terms { grid-template-columns: 1fr; }
+            /* Parcours : la ligne devient verticale */
+            .timeline { grid-template-columns: 1fr; gap: 28px; padding-top: 0; padding-left: 36px; }
+            .timeline::before { top: 6px; bottom: 14px; left: 8px; right: auto; width: 2px; height: auto;
+                background: linear-gradient(to bottom, var(--bg-secondaire), var(--accent-color)); }
+            .timeline::after { top: auto; bottom: 0; right: auto; left: 3px;
+                border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 12px solid var(--accent-color); border-bottom: 0; }
+            .step::before { top: 2px; left: -36px; }
+            .timeline-span { width: auto; text-align: left; padding-bottom: 0; margin-bottom: 18px; }
+            .timeline-span::after { display: none; }
+            .timeline-span span::after { content: " ↓"; color: var(--accent-color); }
+            .pillars { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Menu « burger » sur mobile — uniquement si le JavaScript fonctionne */
+        @media (max-width: 860px) {
+            .js .nav-toggle { display: block; }
+            .js .site-nav {
+                position: absolute; left: 0; right: 0; top: 100%;
+                background-color: var(--bg-principal); border-bottom: 1px solid var(--bg-secondaire);
+                box-shadow: 0 16px 32px rgba(28, 30, 33, 0.08);
+                display: none;
+            }
+            .js .site-nav.is-open { display: block; }
+            .js .site-nav ul { flex-direction: column; align-items: stretch; gap: 0; padding: 8px 32px 24px; }
+            .js .site-nav li a { display: block; padding: 14px 0; font-size: var(--text-lead); }
+            .js .site-nav li + li { border-top: 1px solid var(--bg-secondaire); }
+            /* Sans JavaScript : les onglets passent simplement à la ligne */
+            html:not(.js) .header-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+            html:not(.js) .site-nav ul { flex-wrap: wrap; gap: 8px 20px; }
+        }
+
+        @media (max-width: 560px) {
+            .container { padding: 0 20px; }
+            .js .site-nav ul { padding: 8px 20px 20px; }
+            .pillars { grid-template-columns: 1fr; }
             .card-num { font-size: 52px; right: 16px; }
             .stat { padding-left: 14px; }
+            .hero .btn-row > * { flex: 1 1 100%; }
+            .compass q { display: block; margin: 6px 0 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Fine ligne corail en haut qui indique l'avancement dans la page -->
-    <div class="reading-progress" id="reading-progress"></div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
 
-    <!-- BARRE DE NAVIGATION FIXE ET ADAPTATIVE -->
-    <div class="navbar-fixed" id="navbar">
-        <div class="container">
-            <div class="navbar-content">
-                <div class="brand-block">
-                    <a href="#accueil" class="brand-name">Bettina Hudry-Gerez</a>
-                    <div class="brand-tagline">« Transformer les enjeux de durabilité en activités viables et créatrices de valeur. »</div>
-                </div>
-                <nav>
-                    <a href="#vision">Vision</a>
-                    <a href="#offre">Offre</a>
-                    <a href="#projets">Expériences</a>
-                    <a href="#qui-suis-je">Qui suis-je ?</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </div>
-
-    <!-- SECTION 0 – ACCUEIL MINIMALISTE ÉNERGIQUE -->
-    <section id="accueil" class="hero-section">
-        <div class="container">
-            <div class="eyebrow">Stratégie · Durabilité · Innovation</div>
-            <h1>Transformation de modèles économiques &amp; Durabilité stratégique</h1>
-            <p class="hero-single-line">
-                Poser un <span class="highlight-corail">regard différent</span> pour <span class="highlight-corail">pérenniser</span> les organisations.
-            </p>
-        </div>
-    </section>
-
-    <!-- BANDEAU DE CHIFFRES CLÉS -->
-    <!-- L'apparition porte sur le bandeau entier : sinon le fond gris s'affiche
-         avant son contenu et donne l'impression d'un grand bloc vide. -->
-    <section class="stats-band reveal">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat">
-                    <div class="stat-value">13 ans</div>
-                    <div class="stat-label">en conseil en innovation et stratégie, dont membre du CODIR</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">100+</div>
-                    <div class="stat-label">projets de stratégie et d'innovation menés</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">300+</div>
-                    <div class="stat-label">partenariats noués avec des décideurs ETI et grands groupes</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">1 M€</div>
-                    <div class="stat-label">de développement commercial sur une business unit fragilisée</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-         <!-- SECTION 1 – UNE VISION (PLEINE LARGEUR & ZÉRO DÉFILEMENT) -->
-    <section id="vision" style="padding: var(--space-section) 0; background-color: var(--bg-principal);">
-        <div class="container" style="text-align: left;">
-            
-            <!-- Titre en Panforte pro, taille fluide identique à l'accueil -->
-            <h2 style="font-family: var(--font-title); font-weight: 700; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.2; letter-spacing: -1px; margin-bottom: var(--space-para); color: var(--text-main); text-align: left;">
-                Une Vision
-            </h2>
-            
-            <!-- Paragraphes principaux en Josefin Sans, aucun gras sauf corail -->
-            <div style="max-width: 100%; margin-bottom: var(--space-para); font-size: var(--text-base); line-height: var(--lh-body); font-family: var(--font-body);">
-                <p style="margin-bottom: var(--space-para); color: var(--text-main); font-weight: 400;">
-                    Les enjeux environnementaux <em style="color: var(--text-muted); font-style: italic;">(pénurie des ressources matérielles, concurrence en eau, appauvrissement de la santé des sols, fluctuations rapides du climat…)</em> et sociaux sont une formidable <span class="highlight-corail" style="font-weight: 700;">boussole stratégique pour innover</span> sur le modèle actuel afin d’être économiquement viable aujourd’hui et demain.
-                </p>
-                
-                <p style="margin-bottom: var(--space-para); color: var(--text-main); font-weight: 400;">
-                    Les entreprises encore présentes demain auront su faire évoluer dès aujourd’hui leur modèle économique avant de subir ces risques qui s’intensifient, s’accélèrent voire arrivent de plus en plus en simultané dans un monde fluctuant.
-                </p>
-                
-                <p style="margin-bottom: var(--space-para); color: var(--text-main); font-weight: 400;">
-                    Ces transformations profondes nécessitent aussi quelques ajustements :
-                </p>
+    <!-- ===================== EN-TÊTE ===================== -->
+    <header class="site-header" id="navbar">
+        <div class="container header-inner">
+            <div class="brand">
+                <span class="brand-name">Bettina Hudry-Gerez</span>
+                <span class="brand-tagline">« Transformer les enjeux de durabilité en activités viables et créatrices de valeur. »</span>
             </div>
 
-            <!-- Ajustements décalés en Josefin Sans, puces corail, aucun gras sauf corail -->
-            <div style="padding-left: clamp(12px, 2.5vw, 24px); max-width: 100%; border-left: 2px solid var(--bg-secondaire); font-size: var(--text-base); line-height: var(--lh-body); font-family: var(--font-body);">
-                
-                <!-- Ajustement 1 -->
-                <div style="margin-bottom: var(--space-para); color: var(--text-main); font-weight: 400;">
-                    <p style="margin-bottom: 0;">
-                        <span style="color: var(--accent-color); margin-right: 6px;">•</span>D'expérimenter avec le <span class="highlight-corail" style="font-weight: 700;">minimum de risques et de temps</span> pris sur le présent.
+            <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">
+                <span></span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="#vision">Vision</a></li>
+                    <li><a href="#offre">Offre</a></li>
+                    <li><a href="#projets">Expériences</a></li>
+                    <li><a href="#qui-suis-je">Qui suis-je ?</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenu">
+
+        <!-- ===================== ACCUEIL ===================== -->
+        <section id="accueil" class="hero">
+            <div class="container">
+                <div class="eyebrow">Stratégie · Durabilité · Innovation</div>
+                <h1>Transformation de modèles économiques &amp; Durabilité stratégique</h1>
+                <div class="hero-row">
+                    <a class="hero-photo-link" href="https://www.linkedin.com/in/bettinahudrygerez-sustainability-systemicchange-innovation/" target="_blank" rel="noopener" title="Voir mon profil LinkedIn"><img class="hero-photo" src="photo-bettina.jpg" alt="Portrait de Bettina Hudry-Gerez – voir mon profil LinkedIn" width="450" height="450" fetchpriority="high"></a>
+                    <p class="hero-line">
+                        Poser un <span class="highlight-corail">regard différent</span> pour <span class="highlight-corail">pérenniser</span> les organisations.
                     </p>
                 </div>
-
-                <!-- Ajustement 2 -->
-                <div style="margin-bottom: var(--space-para); color: var(--text-main); font-weight: 400;">
-                    <p style="margin-bottom: 0;">
-                        <span style="color: var(--accent-color); margin-right: 6px;">•</span>D’utiliser une <span class="highlight-corail" style="font-weight: 700;">boussole systémique</span> : Elle permet de prendre de meilleures décisions en reliant les enjeux économiques, environnementaux et humains au lieu de les traiter séparément. Elle permet de déceler les potentiels d’impact positifs insoupçonnés de projets déjà existants.
-                    </p>
-                </div>
-                
-                <!-- Ajustement 3 -->
-                <div style="margin-bottom: var(--space-para); color: var(--text-main); font-weight: 400;">
-                    <p style="margin-bottom: 0;">
-                        <span style="color: var(--accent-color); margin-right: 6px;">•</span>De coopérer avec <span class="highlight-corail" style="font-weight: 700;">l’écosystème</span> : Tant sur la chaîne de valeur que sur le territoire, ces coopérations permettent de dérisquer, gagner en temps, en coût et assurer une robustesse des actions.
-                    </p>
-                </div>
-                
-                <!-- Ajustement 4 -->
-                <div style="margin-bottom: 0; color: var(--text-main); font-weight: 400;">
-                    <p style="margin-bottom: 0;">
-                        <span style="color: var(--accent-color); margin-right: 6px;">•</span>De capitaliser sur <span class="highlight-corail" style="font-weight: 700;">l’intelligence collective</span> : La diversité de profils permet d’élargir les horizons, réduire les angles morts pour aller plus vite, plus loin et avec plus d’impact.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-       <!-- SECTION 2 – MON OFFRE (100% ADAPTATIVE ORDINATEUR / MOBILE & PLEINE LARGEUR) -->
-    <section id="offre" style="padding: var(--space-section) 0; background-color: var(--bg-principal); border-top: 1px solid var(--bg-secondaire);">
-        <div class="container" style="text-align: left; font-family: var(--font-body);">
-            
-            <!-- Titre de section principal fluide -->
-            <div class="eyebrow reveal">Ce que j'apporte</div>
-            <h2 class="reveal" style="margin-bottom: 24px; text-align: left;">
-                Mon Offre
-            </h2>
-
-            <!-- Accroche principale textuelle fusionnée sur la même ligne, sans gras superflu -->
-            <div class="reveal" style="max-width: 100%; margin-bottom: 32px; line-height: var(--lh-body);">
-                <p style="font-size: var(--text-lead); line-height: 1.4; margin-bottom: 20px; text-align: left; color: var(--text-main); font-weight: 500;">
-                    Préparer l’avenir sans fragiliser la solidité économique actuelle
-                </p>
-                <p style="margin-bottom: 0; color: var(--text-main); font-weight: 400;">
-                    J’aide les entreprises dans leur transformation de modèles pour <span class="highlight-corail" style="font-weight: 700;">allier contraintes</span> économiques du présent avec <span class="highlight-corail" style="font-weight: 700;">pérennité</span> et faire des <span class="highlight-corail" style="font-weight: 700;">enjeux de durabilité</span>, un véritable <span class="highlight-corail" style="font-weight: 700;">levier d’opportunités</span> de création de valeur. Pour cela, j’utilise mes compétences à l'interface de différents départements <em style="color: var(--text-muted); font-size: var(--text-small); font-style: italic;">(transformation/stratégie, innovation, business development/partenariat écosystème, RSE)</em> sur 2 sujets.
-                </p>
-            </div>
-
-            <div class="card-stack">
-
-            <!-- LEVIER 1 – carte numérotée -->
-            <div class="card reveal" style="max-width: 100%; line-height: var(--lh-body);">
-                <div class="card-num">01</div>
-                <h3 style="font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px; padding-right: 70px;">
-                    Faire évoluer les activités existantes pour les rendre pérennes et préparer le modèle économique de demain
-                </h3>
-
-                <!-- Blocs de puces décalés avec bordure gauche subtile, calqués sur la section 1 -->
-                <div style="padding-left: clamp(12px, 2.5vw, 24px); max-width: 100%; border-left: 2px solid var(--bg-secondaire);">
-                    <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: var(--text-main); font-weight: 400; font-size: var(--text-base);">
-                            <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                            Repenser une stratégie à l’aide de la boussole systémique des 3 Horizons.
-                        </li>
-                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; color: var(--text-main); font-weight: 400; font-size: var(--text-base);">
-                            <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                            Maximiser les potentiels de durabilité et identifier les angles morts des projets existants.
-                        </li>
-                    </ul>
+                <div class="btn-row">
+                    <a href="#contact" class="btn-primary">Échanger sur votre projet</a>
+                    <a href="#offre" class="btn-resource">Découvrir mon offre&nbsp;→</a>
                 </div>
             </div>
+        </section>
 
-            <!-- LEVIER 2 – carte numérotée -->
-            <div class="card reveal" style="max-width: 100%; line-height: var(--lh-body);">
-                <div class="card-num">02</div>
-                <h3 style="font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px; padding-right: 70px;">
-                    Créer et rendre viable économiquement de nouvelles activités sans fragiliser la solidité de l’organisation
-                </h3>
-                
-                <!-- Blocs de puces décalés avec bordure gauche subtile, calqués sur la section 1 -->
-                <div style="padding-left: clamp(12px, 2.5vw, 24px); max-width: 100%; border-left: 2px solid var(--bg-secondaire);">
-                    <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: var(--text-main); font-weight: 400; font-size: var(--text-base);">
-                            <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                            Explorer de nouveaux modèles économiques / concepts face aux vulnérabilités du modèle actuel liées aux enjeux environnementaux et sociaux.
-                        </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: var(--text-main); font-weight: 400; font-size: var(--text-base);">
-                            <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                            Structurer la stratégie de développement et prioriser les partenariats clés de l’écosystème.
-                        </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: var(--text-main); font-weight: 400; font-size: var(--text-base);">
-                            <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                            Lancer les premières coopérations et accélérer le développement commercial de nouvelles activités.
-                        </li>
-                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; color: var(--text-main); font-weight: 400; font-size: var(--text-base);">
-                            <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                            Encapaciter les équipes pour assurer l’appropriation et pérenniser.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            </div><!-- /.card-stack -->
-
-            <!-- BLOCS DE FIN CONTEXTE, POSTURE ET FORMATS FLEXIBLES ADAPTATIFS -->
-            <div class="reveal" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--bg-secondaire); max-width: 100%; font-size: var(--text-base); line-height: var(--lh-body); display: flex; flex-direction: column; gap: 18px;">
-                
-                <div style="color: var(--text-main); text-align: left; font-weight: 400;">
-                    <span style="font-weight: 700; font-family: var(--font-title); font-size: var(--text-label); display: block; margin-bottom: 2px;">Contexte d'intervention :</span>
-                    Création et/ou développement de nouvelles activités à fort impact <span style="color: var(--accent-color);">•</span> Transformation de modèles économiques fragilisés.
-                </div>
-                
-                <div style="color: var(--text-main); text-align: left; font-weight: 400;">
-                    <span style="font-weight: 700; font-family: var(--font-title); font-size: var(--text-label); display: block; margin-bottom: 2px;">Modalités d'intervention adaptés aux contraintes :</span>En tant que
-                    Sparring partner <span style="color: var(--accent-color);">•</span> Doer <span style="color: var(--text-muted); font-style: italic;">(business development, animation d'ateliers)</span> <span style="color: var(--accent-color);">•</span> Mentor.
-                </div>
-                
-                <div style="color: var(--text-main); text-align: left; font-weight: 400;">
-                    <span style="font-weight: 700; font-family: var(--font-title); font-size: var(--text-label); display: block; margin-bottom: 2px;">Formats flexibles :</span>
-                    Régie sous contrat freelance externalisé <span style="color: var(--accent-color);">•</span> Management de transition <span style="color: var(--text-muted); font-style: italic;">(Direction de BU, Direction commerciale)</span> <span style="color: var(--accent-color);">•</span> Mission ponctuelle <span style="color: var(--accent-color);">•</span> CDI, CDD.
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-           <!-- SECTION 3 – MES EXPÉRIENCES (100% ADAPTATIVE ORDINATEUR / MOBILE & PLEINE LARGEUR) -->
-    <section id="projets" style="padding: var(--space-section) 0; background-color: var(--bg-principal); border-top: 1px solid var(--bg-secondaire);">
-        <div class="container" style="text-align: left;">
-            
-            <!-- Titre de section principal fluide -->
-            <div class="eyebrow reveal">Sur le terrain</div>
-            <h2 class="reveal" style="margin-bottom: 24px; text-align: left;">
-                Mes Expériences
-            </h2>
-
-            <div class="card-stack">
-
-            <!-- ================= LEVIER 1 ================= -->
-            <div class="card reveal" style="max-width: 100%; line-height: var(--lh-body);">
-                <div class="card-num">01</div>
-                <!-- Titre du Levier 1 aligné scrupuleusement sur la taille et la police de la section 2 -->
-                <h3 style="font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px; padding-right: 70px;">
-                    Faire évoluer les activités existantes pour les rendre pérennes et préparer le modèle économique de demain
-                </h3>
-                
-                <!-- Liste des expériences du Levier 1 en Josefin Sans, noir doux, aucun gras -->
-                <ul style="list-style: none; padding-left: 4px; margin-bottom: 0; font-family: var(--font-body); font-weight: 400; font-size: var(--text-base);">
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Cofidis Group <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(DGA impact)</span> – Amorçage de la transformation du modèle du groupe à 10 ans avec le COMEX/CODIR groupe <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(48 membres)</span> à l'aide de la boussole de stratégie systémique des « 3 horizons » / Utilisation de cette boussole avec la filiale France pour décliner l'engagement "éducation à la santé financière" en actions concrètes <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);"> (en coopération avec Sarah Dubreil, circl.earth)</span>.
+        <!-- ===================== CHIFFRES CLÉS ===================== -->
+        <section class="stats-band reveal" aria-label="Chiffres clés">
+            <div class="container">
+                <ul class="stats-grid">
+                    <li class="stat">
+                        <div class="stat-value">13 ans</div>
+                        <div class="stat-label">en conseil en innovation et stratégie, dont membre du CODIR</div>
                     </li>
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Savencia <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(Direction ressources laitières)</span> – Amorçage de la stratégie à 10 ans du département en prenant conscience des modèles d’agricultures durables : leurs enjeux, avantages et inconvénients <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(en coopération avec Didier Moreau, désirable conseil, fondateur de l’atelier des agricultures durables)</span>.
+                    <li class="stat">
+                        <div class="stat-value">100+</div>
+                        <div class="stat-label">projets de stratégie et d'innovation menés</div>
                     </li>
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Collège des Directeurs du Développement Durable C3D  – Expérimentation  de la boussole des 3Horizons par 12 directeurs RSE pour aligner contraintes du présent avec pérennité d'entreprise <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);"> (en coopération avec Sarah Dubreil, circl.earth)</span>.
+                    <li class="stat">
+                        <div class="stat-value">300+</div>
+                        <div class="stat-label">partenariats noués avec des décideurs ETI et grands groupes</div>
                     </li>
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Emmaüs BSE <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(DG)</span> – Priorisation de leviers stratégiques de transformation pour pérenniser l’entreprise sociale et solidaire.
-                    </li>
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Maximiser les potentiels inexplorés de création de valeur via la « spirale symbiotique » développée par Isabelle Delannoy appliquée à 3 projets agroalimentaires <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(Unilasalle Beauvais)</span>.
-                    </li>
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Projets de stratégie et d’innovation chez Alcimed <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(100+ projets)</span>.
-                    </li>
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Formation "Impact Social &amp; Business Model Inclusif" - HEC <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(2024)</span>.
-                    </li>
-                    <li style="margin-bottom: 0; padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Formation "Économie régénérative" – CNAM et AXA climate Butterfly <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(2025)</span>.
+                    <li class="stat">
+                        <div class="stat-value">1 M€</div>
+                        <div class="stat-label">de développement commercial sur une business unit fragilisée</div>
                     </li>
                 </ul>
             </div>
+        </section>
 
-            <!-- ================= LEVIER 2 ================= -->
-            <div class="card reveal" style="max-width: 100%; line-height: var(--lh-body);">
-                <div class="card-num">02</div>
-                <!-- Titre du Levier 2 aligné scrupuleusement sur la taille et la police de la section 2 -->
-                <h3 style="font-size: clamp(19px, 2.2vw, 26px); color: var(--accent-color); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.5px; padding-right: 70px;">
-                    Créer et rendre viable économiquement de nouvelles activités sans fragiliser la solidité de l’organisation
-                </h3>
-                
-                <!-- Liste des expériences du Levier 2 en Josefin Sans, noir doux, aucun gras -->
-                <ul style="list-style: none; padding-left: 4px; margin-bottom: 0; font-family: var(--font-body); font-weight: 400; font-size: var(--text-base);">
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Ouverture de la nouvelle Business Unit Asie à Singapour - définition de la feuille de route stratégique, développement commercial de 0 à 700k€, conduite du changement dans un contexte de forte complexité (Covid, turnover), recrutement et formation pour le passage de 1 à 8 personnes, 300+ nouveaux partenariats avec des décideurs ETI / grands groupes, gestion du P&amp;L <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);"> (Alcimed)</span>.
+        <!-- ===================== VISION ===================== -->
+        <section id="vision" class="section">
+            <div class="container">
+                <div class="prose reveal vision-intro">
+                    <div class="eyebrow">Ma vision</div>
+                    <h2>Repenser son modèle pour exister encore demain</h2>
+                    <p>
+                        Face à des risques qui s’intensifient, s’accélèrent et s’accumulent, les enjeux environnementaux et sociaux sont de <span class="highlight-corail">vraies boussoles stratégiques</span> pour <span class="highlight-corail">faire évoluer son modèle</span>. Ces transformations nécessitent aussi quelques ajustements :
+                    </p>
+                </div>
+
+                <ol class="pillars reveal">
+                    <li class="pillar">
+                        <span class="pillar-title">Expérimenter sans fragiliser le présent</span>
+                        <p>Avec un minimum de risque et de temps pris sur les équipes opérationnelles.</p>
                     </li>
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Structuration de 100+ partenariats avec des décideurs de grands groupes <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(Danone, L'Oréal, Sanofi...)</span> sur des sujets d'innovation business et de durabilité <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(Alcimed)</span>.
+                    <li class="pillar">
+                        <span class="pillar-title">Adopter une approche systémique</span>
+                        <p>Pour interconnecter les enjeux et éclairer les décisions.</p>
                     </li>
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Développement commercial d’une BU fragilisée jusqu’à 1 M€ <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(Alcimed)</span>.
+                    <li class="pillar">
+                        <span class="pillar-title">Coopérer avec son écosystème</span>
+                        <p>Sur la chaîne de valeur comme sur le territoire, pour mutualiser les risques et les coûts, et favoriser des actions pérennes.</p>
                     </li>
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Structuration de la stratégie de développement et lancement des premiers partenariats entreprises et écoles supérieures <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(GenAct)</span>.
+                    <li class="pillar">
+                        <span class="pillar-title">Mobiliser l’intelligence collective</span>
+                        <p>Grâce à la diversité des profils, pour aller plus vite et plus loin.</p>
                     </li>
-                    <li style="margin-bottom: var(--space-para); padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Conception et déploiement d'un programme de montée en compétences <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">("Summer Sales School")</span> pour harmoniser les pratiques commerciales de 30 collaborateurs <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(Alcimed)</span>.
-                    </li>
-                    <li style="margin-bottom: 0; padding-left: 20px; position: relative; color: var(--text-main);">
-                        <span style="position: absolute; left: 0; color: var(--accent-color);">•</span>
-                        Enseignement et mentorat sur les nouveaux modèles économiques, l'entrepreneuriat à impact et la stratégie de transformation auprès de 50+ étudiants <span style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(HEC Paris &amp; Paris School of Business)</span>.
-                    </li>
-                </ul>
+                </ol>
             </div>
+        </section>
 
-            </div><!-- /.card-stack -->
-
-        </div>
-    </section>
-
-
-        <!-- SECTION 4 – QUI SUIS-JE ? & VALEURS (100% ADAPTATIVE ORDINATEUR / MOBILE & PLEINE LARGEUR) -->
-    <section id="qui-suis-je" style="padding: var(--space-section) 0; background-color: var(--bg-principal); border-top: 1px solid var(--bg-secondaire);">
-        <div class="container" style="text-align: justify; text-justify: inter-word;">
-            
-            <!-- Titre principal de la section en Panforte pro -->
-            <div class="eyebrow reveal">Mon parcours</div>
-            <h2 class="reveal" style="margin-bottom: 24px; text-align: left;">
-                Qui suis-je ?
-            </h2>
-
-            <!-- Structure Flexbox adaptative Ordinateur / Mobile pour intégrer votre photo -->
-            <div class="reveal" style="display: flex; gap: clamp(24px, 4vw, 48px); align-items: flex-start; flex-wrap: wrap; max-width: 100%; margin-bottom: 32px;">
-                
-                <!-- Bloc de texte biographique principal en Josefin Sans, noir doux, aucun gras -->
-                <div style="flex: 2; min-width: 280px; font-family: var(--font-body); font-size: var(--text-base); line-height: var(--lh-body); color: var(--text-main); font-weight: 400;">
-                    <p style="margin-bottom: var(--space-para);">
-                        Véritable intrapreneur et développeuse de nouveaux projets, j’ai intégré la transition comme un moteur essentiel de création de valeur.
+        <!-- ===================== OFFRE ===================== -->
+        <section id="offre" class="section">
+            <div class="container">
+                <div class="section-intro prose reveal">
+                    <div class="eyebrow">Ce que j'apporte</div>
+                    <h2>Préparer l’avenir sans fragiliser la solidité économique actuelle</h2>
+                    <p>
+                        J’accompagne les entreprises dans la transformation de leur modèle, pour <span class="highlight-corail">concilier contraintes économiques du présent</span> et <span class="highlight-corail">pérennité</span>, et faire de la <span class="highlight-corail">durabilité</span> un <span class="highlight-corail">levier de création de valeur</span>, sur 2 axes :
                     </p>
-                    
-                    <p style="margin-bottom: var(--space-para);">
-                        Pendant 13 années au sein d’Alcimed <em style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(cabinet de conseil en innovation et stratégie)</em>, j'ai développé de nouveaux partenariats avec des grands groupes, principalement dans l'agroalimentaire, la santé et les cosmétiques, avant d'ouvrir et de diriger la filiale Asie en tant que membre du CODIR.
-                    </p>
-                    
-                    <p style="margin-bottom: var(--space-para);">
-                        Revenue en Europe et formée depuis 3 ans aux nouveaux modèles économiques issus des enjeux sociaux et environnementaux <em style="color: var(--text-muted); font-style: italic; font-size: var(--text-small);">(business inclusif, économie régénérative, EFC…)</em>, je mets aujourd'hui à disposition mes compétences en stratégie, innovation, développement commercial et partenariats écosystèmes pour accélérer la transformation concrète des organisations. Un profil qui tisse des ponts entre la profondeur de la réflexion systémique et l'agilité de l'action sur le terrain.
-                    </p>
-                    
-                    <!-- RESSOURCES : CV et Portfolio téléchargeables + LinkedIn -->
-                    <div class="resource-row">
-                        <a href="bettina-hudry-gerez-cv.pdf" target="_blank" rel="noopener" class="btn-resource">
-                            ↓&nbsp; Mon CV (PDF)
-                        </a>
-                        <a href="bettina-hudry-gerez-portfolio.pdf" target="_blank" rel="noopener" class="btn-resource">
-                            ↓&nbsp; Mon portfolio (PDF)
-                        </a>
-                        <a href="https://www.linkedin.com/in/bettinahudrygerez-sustainability-systemicchange-innovation/"
-                           target="_blank" rel="noopener" class="link-inline">
-                            Mon parcours sur LinkedIn →
-                        </a>
+                </div>
+
+                <div class="card-grid">
+                    <article class="card reveal">
+                        <div class="card-num" aria-hidden="true">01</div>
+                        <span class="card-kicker">Transformer l’existant</span>
+                        <h3 class="card-title">Faire évoluer les activités existantes pour les rendre pérennes et préparer le modèle économique de demain</h3>
+                        <ul class="bullets">
+                            <li>Repenser la stratégie à l’aide de la <strong>boussole systémique des 3 Horizons</strong>.</li>
+                            <li><strong>Révéler le potentiel de durabilité</strong> des projets existants et en identifier les <strong>angles morts</strong>.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="card-num" aria-hidden="true">02</div>
+                        <span class="card-kicker">Développer le nouveau</span>
+                        <h3 class="card-title">Créer de nouvelles activités économiquement viables, sans fragiliser l’organisation</h3>
+                        <ul class="bullets">
+                            <li>Explorer de <strong>nouveaux modèles économiques</strong> et de nouvelles offres face aux <strong>vulnérabilités du modèle actuel</strong>.</li>
+                            <li>Structurer la <strong>stratégie de développement</strong> et prioriser les <strong>partenariats clés</strong> de l’écosystème.</li>
+                            <li>Lancer les <strong>premières coopérations</strong> et accélérer le <strong>développement commercial</strong> de ces nouvelles activités.</li>
+                            <li>Faire <strong>monter les équipes en compétences</strong> pour qu’elles s’approprient la démarche et la pérennisent.</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="terms reveal">
+                    <div>
+                        <span class="term-label">Contexte d'intervention</span>
+                        <ul class="chips">
+                            <li class="chip">Création et/ou développement de nouvelles activités à fort impact</li>
+                            <li class="chip">Transformation de modèles économiques fragilisés</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="term-label">Modalités d'intervention adaptées aux contraintes</span>
+                        <ul class="chips">
+                            <li class="chip">Sparring partner</li>
+                            <li class="chip">Doer <span class="aside">(business development, animation d'ateliers)</span></li>
+                            <li class="chip">Mentor</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="term-label">Formats flexibles</span>
+                        <ul class="chips">
+                            <li class="chip">Régie sous contrat freelance externalisé</li>
+                            <li class="chip">Management de transition <span class="aside">(Direction de BU, Direction commerciale)</span></li>
+                            <li class="chip">Mission ponctuelle</li>
+                            <li class="chip">CDI, CDD</li>
+                        </ul>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Bloc Image de Profil Adaptatif -->
-                <div style="flex: 1; min-width: 240px; text-align: center; display: flex; justify-content: center;">
-                    <img src="photo-bettina.jpg" alt="Bettina Hudry-Gerez" style="width: 100%; max-width: 240px; height: auto; border-radius: 4px; object-fit: cover;">
+        <!-- ===================== EXPÉRIENCES ===================== -->
+        <section id="projets" class="section">
+            <div class="container">
+                <div class="section-intro reveal">
+                    <div class="eyebrow">Sur le terrain</div>
+                    <h2>Mes Expériences</h2>
                 </div>
 
+                <div class="card-grid">
+                    <article class="card reveal">
+                        <div class="card-num" aria-hidden="true">01</div>
+                        <span class="card-kicker">Transformer l’existant</span>
+                        <h3 class="card-title">Faire évoluer les activités existantes pour les rendre pérennes et préparer le modèle économique de demain</h3>
+                        <ul class="exp-list">
+                            <li>
+                                <span class="exp-logo" data-initials="CO" aria-hidden="true"><img src="logos/cofidis.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">Cofidis Group <span class="aside">(DGA impact)</span></span>
+                                <p>Amorçage de la transformation du modèle du groupe à 10 ans avec le COMEX/CODIR groupe à l'aide de la boussole de stratégie systémique des « 3 Horizons » / Utilisation de cette boussole avec la filiale France pour décliner l'engagement « éducation à la santé financière » en actions concrètes <span class="aside">(en coopération avec Sarah Dubreil, circl.earth)</span>.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="exp-logo" data-initials="SA" aria-hidden="true"><img src="logos/savencia.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">Savencia <span class="aside">(Direction ressources laitières)</span></span>
+                                <p>Amorçage de la stratégie à 10 ans du département en prenant conscience des modèles d’agricultures durables : leurs enjeux, avantages et inconvénients <span class="aside">(en coopération avec Didier Moreau, désirable conseil, fondateur de l’atelier des agricultures durables)</span>.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="exp-logo" data-initials="C3D" aria-hidden="true"><img src="logos/c3d.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">Collège des Directeurs du Développement Durable <span class="aside">(C3D)</span></span>
+                                <p>Expérimentation de la boussole des 3 Horizons par 12 directeurs RSE pour aligner contraintes du présent avec pérennité d'entreprise <span class="aside">(en coopération avec Sarah Dubreil, circl.earth)</span>.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="exp-logo" data-initials="EM" aria-hidden="true"><img src="logos/emmaus.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">Emmaüs BSE <span class="aside">(DG)</span></span>
+                                <p>Priorisation de leviers stratégiques de transformation pour pérenniser l’entreprise sociale et solidaire.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="exp-logo" data-initials="UL" aria-hidden="true"><img src="logos/unilasalle.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">UniLaSalle Beauvais</span>
+                                <p>Maximiser les potentiels inexplorés de création de valeur via la « spirale symbiotique » développée par Isabelle Delannoy, appliquée à 3 projets agroalimentaires.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="exp-logo" data-initials="AL" aria-hidden="true"><img src="logos/alcimed.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">Alcimed <span class="aside">(100+ projets)</span></span>
+                                <p>Projets de stratégie et d’innovation.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="card-num" aria-hidden="true">02</div>
+                        <span class="card-kicker">Développer le nouveau</span>
+                        <h3 class="card-title">Créer de nouvelles activités économiquement viables, sans fragiliser l’organisation</h3>
+                        <ul class="exp-list">
+                            <li>
+                                <span class="exp-logo" data-initials="AL" aria-hidden="true"><img src="logos/alcimed.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">Alcimed · Business Unit Asie <span class="aside">(Singapour)</span></span>
+                                <p>Ouverture de la nouvelle BU : définition de la feuille de route stratégique, développement commercial de 0 à 700 k€, conduite du changement dans un contexte de forte complexité (Covid, turnover), recrutement et formation pour le passage de 1 à 8 personnes, 300+ nouveaux partenariats avec des décideurs ETI / grands groupes, gestion du P&amp;L.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="exp-logo" data-initials="AL" aria-hidden="true"><img src="logos/alcimed.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">Alcimed · Grands comptes</span>
+                                <p>Structuration de 100+ partenariats avec des décideurs de grands groupes <span class="aside">(Danone, L'Oréal, Sanofi…)</span> sur des sujets d'innovation business et de durabilité.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="exp-logo" data-initials="AL" aria-hidden="true"><img src="logos/alcimed.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">Alcimed · Redressement d’une BU</span>
+                                <p>Développement commercial d’une BU fragilisée jusqu’à 1 M€.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="exp-logo" data-initials="GA" aria-hidden="true"><img src="logos/genact.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">GenAct</span>
+                                <p>Structuration de la stratégie de développement et lancement des premiers partenariats entreprises et écoles supérieures.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="exp-logo" data-initials="AL" aria-hidden="true"><img src="logos/alcimed.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">Alcimed · « Summer Sales School »</span>
+                                <p>Conception et déploiement d'un programme de montée en compétences pour harmoniser les pratiques commerciales de 30 collaborateurs.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="exp-logo" data-initials="HEC" aria-hidden="true"><img src="logos/hec.png" alt="" loading="lazy" onerror="this.remove()"></span>
+                                <div class="exp-body">
+                                <span class="exp-org">HEC Paris &amp; Paris School of Business</span>
+                                <p>Enseignement et mentorat sur les nouveaux modèles économiques, l'entrepreneuriat à impact et la stratégie de transformation auprès de 50+ étudiants.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <!-- ================= SOUS-SECTION MES VALEURS ================= -->
-            <div style="max-width: 100%; border-top: 1px solid var(--bg-secondaire); padding-top: 24px;">
-                
-                <!-- Titre Mes valeurs -->
-                <h3 style="font-size: var(--text-subtitle); color: var(--text-main); margin-bottom: var(--space-para); text-align: left; letter-spacing: -0.3px;">
-                    Mes valeurs
-                </h3>
+        <!-- ===================== QUI SUIS-JE ===================== -->
+        <section id="qui-suis-je" class="section">
+            <div class="container">
+                <div class="eyebrow reveal">Qui suis-je ?</div>
+                <h2 class="reveal">Mon parcours</h2>
 
-                <!-- Les 4 valeurs présentées en grille de cartes.
-                     Chaque verbe démarre une nouvelle ligne : c'est plus lisible
-                     qu'une longue phrase séparée par des virgules. -->
-                <div class="values-grid reveal" style="margin-bottom: 28px; text-align: left; font-family: var(--font-body); font-weight: 400; color: var(--text-main);">
+                <p class="about-intro reveal">
+                    Intrapreneuse dans l’âme, j’ai fait de la <span class="highlight-corail">transition</span> un moteur essentiel de <span class="highlight-corail">création de valeur</span>.
+                </p>
 
-                    <div class="value-card">
+                <!-- Ligne directrice : le parcours en 4 étapes (horizontal sur ordinateur, vertical sur mobile) -->
+                <div class="timeline-wrap reveal">
+                <div class="timeline-span"><span>13 ans chez Alcimed</span></div>
+                <ol class="timeline">
+                    <li class="step">
+                        <span class="step-when">France &amp; Espagne</span>
+                        <h3 class="step-title">Partenariats grands groupes</h3>
+                        <p>Au sein d’Alcimed, cabinet de conseil en innovation et stratégie : développement de nouveaux partenariats avec de grands groupes, principalement dans l’agroalimentaire et la cosmétique.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step-when">Asie</span>
+                        <h3 class="step-title">Ouverture de la filiale Asie</h3>
+                        <p>J’ai ouvert puis dirigé la filiale Asie, en tant que membre du CODIR.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step-when">Depuis 3 ans</span>
+                        <h3 class="step-title">Retour en Europe &amp; nouveaux modèles</h3>
+                        <p>Je me forme aux nouveaux modèles économiques nés des enjeux sociaux et environnementaux : business inclusif, économie régénérative, EFC… <span class="aside">(HEC 2024 · CNAM &amp; AXA Climate Butterfly 2025)</span></p>
+                    </li>
+                    <li class="step is-now">
+                        <span class="step-when">Aujourd’hui</span>
+                        <h3 class="step-title">Au service de la transformation</h3>
+                        <p>Je mets mes compétences en stratégie, innovation, développement commercial et partenariats écosystème au service de la transformation concrète des organisations.</p>
+                    </li>
+                </ol>
+                </div>
+
+                <p class="compass red-thread reveal">Mon fil rouge <q>Tisser des ponts entre la profondeur de la réflexion systémique et le pragmatisme de l’action terrain</q></p>
+
+                <div class="btn-row about-links reveal">
+                    <a href="bettina-hudry-gerez-cv.pdf" target="_blank" rel="noopener" class="btn-resource">↓&nbsp; Mon CV (PDF)</a>
+                    <a href="bettina-hudry-gerez-portfolio.pdf" target="_blank" rel="noopener" class="btn-resource">↓&nbsp; Mon portfolio (PDF)</a>
+                    <a href="https://www.linkedin.com/in/bettinahudrygerez-sustainability-systemicchange-innovation/" target="_blank" rel="noopener" class="link-inline">Mon parcours sur LinkedIn →</a>
+                </div>
+
+                <h3 class="values-title reveal">Mes valeurs</h3>
+                <ul class="values-grid reveal">
+                    <li class="value-card">
                         <span class="value-name">Aventure</span>
                         <ul class="value-list">
                             <li>Explorer de nouveaux horizons.</li>
                             <li>Utiliser l’audace dans l’inconnu.</li>
                             <li>Faire preuve de créativité forte pour faire face à de nouveaux défis complexes.</li>
                         </ul>
-                    </div>
-
-                    <div class="value-card">
+                    </li>
+                    <li class="value-card">
                         <span class="value-name">Altruisme</span>
                         <ul class="value-list">
                             <li>Agir pour l’impact collectif.</li>
@@ -941,204 +944,121 @@
                             <li>Mutualiser les difficultés.</li>
                             <li>Se soutenir dans l’entraide.</li>
                         </ul>
-                    </div>
-
-                    <div class="value-card">
+                    </li>
+                    <li class="value-card">
                         <span class="value-name">Sagesse</span>
                         <ul class="value-list">
                             <li>Prendre du recul.</li>
                             <li>S’adapter.</li>
                             <li>Écouter les signaux faibles.</li>
-                            <li>Être sincère et simplement humaine.</li>
+                            <li>Être authentique.</li>
                         </ul>
-                    </div>
-
-                    <div class="value-card">
+                    </li>
+                    <li class="value-card">
                         <span class="value-name">Enthousiasme</span>
                         <ul class="value-list">
                             <li>Embarquer avec énergie, optimisme et légèreté.</li>
                             <li>Agir proactivement.</li>
                             <li>Leader avec dynamisme.</li>
                         </ul>
-                    </div>
-                </div>
+                    </li>
+                </ul>
 
-                <!-- Ma boussole : mise en avant sur fond perle -->
-                <div class="reveal" style="background-color: var(--bg-secondaire); border-radius: 8px; padding: 26px; margin-top: 24px; text-align: center;">
-                    <p style="margin-bottom: 0; font-family: var(--font-body); font-weight: 400; color: var(--text-main); line-height: 1.5;">
-                        <span style="font-family: var(--font-title); font-weight: 700; font-size: var(--text-subtitle);">Ma boussole</span>
-                        <span style="font-family: var(--font-title); color: var(--accent-color); font-weight: 700; font-size: var(--text-subtitle); margin-left: 10px; letter-spacing: -0.3px;">« Explore, Dare, Impact, Care »</span>
-                    </p>
-                </div>
-
+                <p class="compass reveal">Ma boussole <q>Explore, Dare, Impact, Care</q></p>
             </div>
+        </section>
 
+        <!-- ===================== CONTACT ===================== -->
+        <section id="contact" class="contact">
+            <div class="container reveal">
+                <div class="eyebrow">Travaillons ensemble</div>
+                <h2>Engager la réflexion</h2>
+                <p class="contact-text">
+                    Vous souhaitez échanger sur vos enjeux de transformation systémique, aligner vos contraintes présentes avec l'avenir, ou initier une collaboration ?
+                </p>
+
+                <a href="mailto:hudrybettina@gmail.com?subject=Prise%20de%20contact%20depuis%20votre%20site" class="btn-primary is-large">Me contacter par e-mail</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 Bettina Hudry-Gerez · Stratégie, Durabilité &amp; Impact. Tous droits réservés.</p>
         </div>
-    </section>
-  
-    <!-- SECTION 5 – ME CONTACTER -->
-    <section id="contact" style="background-color: var(--bg-secondaire); padding: 120px 0; border-top: 1px solid var(--bg-secondaire);">
-        <div class="container reveal" style="text-align: center;">
-            <div class="eyebrow" style="justify-content: center;">Travaillons ensemble</div>
-            <h2 style="margin-bottom: 24px;">Engager la réflexion</h2>
+    </footer>
 
-            <p style="font-size: clamp(18px, 2vw, 21px); line-height: var(--lh-body); margin: 0 auto 44px auto; max-width: 650px; color: var(--text-main);">
-                Vous souhaitez échanger sur vos enjeux de transformation systémique, aligner vos contraintes présentes avec l'avenir, ou initier une collaboration ?
-            </p>
-
-            <!-- Bouton d'action principal utilisant les 10% d'accentuation corail -->
-            <div style="margin-bottom: 28px;">
-                <a href="mailto:hudrybettina@gmail.com" class="btn-primary">
-                    Me contacter par e-mail
-                </a>
-            </div>
-
-            <!-- Les trois ressources, en retrait du bouton principal -->
-            <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: center; margin-bottom: 28px;">
-                <a href="bettina-hudry-gerez-cv.pdf" target="_blank" rel="noopener" class="btn-resource">
-                    ↓&nbsp; Mon CV (PDF)
-                </a>
-                <a href="bettina-hudry-gerez-portfolio.pdf" target="_blank" rel="noopener" class="btn-resource">
-                    ↓&nbsp; Mon portfolio (PDF)
-                </a>
-                <a href="https://www.linkedin.com/in/bettinahudrygerez-sustainability-systemicchange-innovation/" target="_blank" rel="noopener" class="btn-resource">
-                    Mon profil LinkedIn&nbsp;→
-                </a>
-            </div>
-
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 16px;">
-                Directement à : <span style="font-weight: 500; color: var(--text-main);">hudrybettina@gmail.com</span>
-            </p>
-        </div>
-    </section>
-
-    <!-- PIED DE PAGE CLOSING THE SITE -->
-    <div class="container">
-        <footer style="padding: 60px 0; font-size: 14px; color: var(--text-muted); text-align: center;">
-            <p>© 2026 Bettina Hudry · Stratégie, Durabilité &amp; Impact. Tous droits réservés.</p>
-        </footer>
-    </div>
-
-    <!-- ============================================================= -->
-    <!--  ANIMATIONS ET INTERACTIONS                                   -->
-    <!--  Aucune bibliothèque externe : tout est natif.                -->
-    <!-- ============================================================= -->
+    <!-- ===================== INTERACTIONS (natif, sans bibliothèque) ===================== -->
     <script>
     (function () {
         "use strict";
 
-        // Respecte le réglage système « réduire les animations »
-        var reduceMotion = window.matchMedia &&
-                           window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        var navbar   = document.getElementById("navbar");
+        var root     = document.documentElement;
+        var header   = document.getElementById("navbar");
         var progress = document.getElementById("reading-progress");
-        var navLinks = Array.prototype.slice.call(document.querySelectorAll("nav a"));
+        var nav      = document.getElementById("site-nav");
+        var toggle   = document.querySelector(".nav-toggle");
+        var navLinks = Array.prototype.slice.call(nav.querySelectorAll("a"));
+        var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        // ---- 0. Cale le contenu juste sous le menu fixe ----
-        // La hauteur du menu varie selon la largeur de l'écran (les onglets
-        // passent à la ligne). On la mesure au lieu de la deviner, ce qui
-        // évite un grand vide en haut de page.
-        function fitToNavbar() {
-            if (!navbar) { return; }
-            var wasCompact = navbar.classList.contains("is-compact");
-            // On mesure toujours la hauteur en version dépliée, pour que le
-            // contenu ne saute pas quand le menu se compacte au défilement.
-            if (wasCompact) { navbar.classList.remove("is-compact"); }
-            var h = navbar.offsetHeight;
-            if (wasCompact) { navbar.classList.add("is-compact"); }
-
-            document.body.style.paddingTop = h + "px";
-            document.documentElement.style.scrollPaddingTop = (h + 24) + "px";
+        // ---- Hauteur du menu → décalage des ancres (en-tête collant) ----
+        function measureHeader() {
+            root.style.setProperty("--header-h", header.offsetHeight + "px");
         }
+        measureHeader();
+        window.addEventListener("resize", measureHeader, { passive: true });
+        if (document.fonts && document.fonts.ready) { document.fonts.ready.then(measureHeader).catch(function () {}); }
 
-        fitToNavbar();
-        window.addEventListener("resize", fitToNavbar, { passive: true });
-        // Les polices web changent la hauteur du menu une fois chargées
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(fitToNavbar).catch(function () {});
+        // ---- Menu mobile ----
+        function setMenu(open) {
+            nav.classList.toggle("is-open", open);
+            toggle.setAttribute("aria-expanded", open ? "true" : "false");
+            toggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
         }
-        window.addEventListener("load", fitToNavbar);
+        toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("is-open")); });
+        navLinks.forEach(function (l) { l.addEventListener("click", function () { setMenu(false); }); });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") { setMenu(false); } });
 
-        // Associe chaque onglet à sa section (ignore les liens externes)
-        var sections = navLinks
-            .map(function (link) {
-                var id = link.getAttribute("href");
-                if (!id || id.charAt(0) !== "#") { return null; }
-                var el = document.querySelector(id);
-                return el ? { link: link, el: el } : null;
-            })
-            .filter(Boolean);
+        // ---- Progression, en-tête compact, onglet actif ----
+        var sections = navLinks.map(function (link) {
+            var el = document.querySelector(link.getAttribute("href"));
+            return el ? { link: link, el: el } : null;
+        }).filter(Boolean);
 
-        // ---- 1. Barre de progression + barre de nav compacte ----
         function onScroll() {
-            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var y = window.pageYOffset || root.scrollTop;
+            var max = root.scrollHeight - window.innerHeight;
+            progress.style.transform = "scaleX(" + (max > 0 ? Math.min(1, y / max) : 0) + ")";
+            header.classList.toggle("is-compact", y > 40);
 
-            if (progress) {
-                var height = document.documentElement.scrollHeight - window.innerHeight;
-                var pct = height > 0 ? (scrollTop / height) * 100 : 0;
-                progress.style.width = Math.min(100, Math.max(0, pct)) + "%";
-            }
-
-            if (navbar) {
-                navbar.classList.toggle("is-compact", scrollTop > 80);
-            }
-
-            // ---- 2. Onglet actif : la section la plus haute encore visible ----
-            var current = null;
-            var trigger = scrollTop + (window.innerHeight * 0.35);
-            for (var i = 0; i < sections.length; i++) {
-                if (sections[i].el.offsetTop <= trigger) { current = sections[i]; }
-            }
-            navLinks.forEach(function (l) { l.classList.remove("is-active"); });
-            if (current) { current.link.classList.add("is-active"); }
+            var trigger = y + window.innerHeight * 0.35, current = null;
+            sections.forEach(function (s) { if (s.el.offsetTop <= trigger) { current = s; } });
+            // En bas de page, le contact est toujours actif
+            if (max - y < 4 && sections.length) { current = sections[sections.length - 1]; }
+            navLinks.forEach(function (l) { l.classList.toggle("is-active", current && l === current.link); });
         }
 
-        // Limite les calculs à un par rafraîchissement d'écran
         var ticking = false;
         window.addEventListener("scroll", function () {
-            if (!ticking) {
-                window.requestAnimationFrame(function () { onScroll(); ticking = false; });
-                ticking = true;
-            }
+            if (!ticking) { requestAnimationFrame(function () { onScroll(); ticking = false; }); ticking = true; }
         }, { passive: true });
-
         window.addEventListener("resize", onScroll, { passive: true });
         onScroll();
 
-        // ---- 3. Apparition en fondu des blocs au défilement ----
+        // ---- Apparition en fondu ----
         var revealables = document.querySelectorAll(".reveal");
-
-        function revealAll() {
-            Array.prototype.forEach.call(revealables, function (el) {
-                el.classList.add("is-visible");
-            });
-        }
+        function revealAll() { Array.prototype.forEach.call(revealables, function (el) { el.classList.add("is-visible"); }); }
 
         if (reduceMotion || !("IntersectionObserver" in window)) {
-            // Pas d'animation : tout est visible immédiatement
             revealAll();
         } else {
             var observer = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                        observer.unobserve(entry.target);
-                    }
+                    if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); }
                 });
-            // Seuil à 0 : un grand bloc apparaît dès que son bord entre à
-            // l'écran. Avec un seuil en pourcentage, les cartes hautes
-            // restaient vides trop longtemps.
             }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
-
-            Array.prototype.forEach.call(revealables, function (el) {
-                observer.observe(el);
-            });
-
-            // FILET DE SÉCURITÉ : si pour une raison quelconque l'observateur
-            // ne se déclenche pas, on affiche tout au bout de 3 secondes.
-            // Mieux vaut une animation manquée qu'un contenu invisible.
-            setTimeout(revealAll, 3000);
+            Array.prototype.forEach.call(revealables, function (el) { observer.observe(el); });
+            setTimeout(revealAll, 3000); // filet de sécurité
         }
     })();
     </script>
